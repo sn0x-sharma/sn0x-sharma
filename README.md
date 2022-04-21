@@ -61,11 +61,9 @@ Cyber security Researcher and extensive knowledge of Information Security along 
                                 <a href="https://trufflesuite.com" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/truffle-colored.svg" width="36" height="36" alt="Truffle" /></a>
                                 <a href="https://www.arweave.org/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/arweave-colored-dark.svg" width="36" height="36" alt="Arweave" /></a>
                                 <a href="https://ethereum.org/en/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/ethereum-colored.svg" width="36" height="36" alt="Ethereum" /></a>
+  
                     </p>
-                    
-                  ### Socials
-                  
-                  
+                                  
                 <p align="left">
                           
                       <a href="https://discord.com/users/sn0xsec" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/discord.svg" width="32" height="32" /></a>
