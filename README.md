@@ -1,7 +1,7 @@
 Hi 👋 My name is sanket sharma AKA sn0x
 =======================================
 
-Cyber security researcher and Machine learning enginear , Bug bounty hunter , CEHv11 , EWPTXv2 , AWS , RHCSA certified.
+Cyber security researcher and Machine learning engineer , Bug bounty hunter , CEHv11 , EWPTXv2 , AWS , RHCSA certified.
 -----------------------------------------------------------------------------------------------------------------------
 
 Cyber security Researcher and extensive knowledge of Information Security along with other Computer Science domains. Detail-oriented with excellent observational, organizational and communication skills with strong interest in ethical hacking, penetration testing, vulnerability analysis, and network security. Hard-working, energetic, personable, and technical-minded individual. Possess exceptional customer service and communication skills with the strong ability to multitask and resolve issues quickly.
