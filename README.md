@@ -1,13 +1,13 @@
 Hi 👋 My name is sanket sharma AKA sn0x
 =======================================
 
-Cyber security researcher and Machine learning engineer , Bug bounty hunter , CEHv11 , EWPTXv2 , AWS , RHCSA certified.
+Cyber security researcher and Machine learning engineer , Bug bounty hunter , CEHv11 , EWPTXv2 , AWS , RHCSA certified. Hall of Fame : Tesla (2021) / Global all time ranking :  Hacker rank Top 300 (2021) , Hack the box Top 200 (2021) ,Cryptohack top 200 TryHackMe global #2, India #1 (2024).
 -----------------------------------------------------------------------------------------------------------------------
 
 Cyber security Researcher and extensive knowledge of Information Security along with other Computer Science domains. Detail-oriented with excellent observational, organizational and communication skills with strong interest in ethical hacking, penetration testing, vulnerability analysis, and network security. Hard-working, energetic, personable, and technical-minded individual. Possess exceptional customer service and communication skills with the strong ability to multitask and resolve issues quickly.
 
 * 🌍  I'm based in Andheri mumbai
-* ✉️  You can contact me at [sanketsharma9510@gmail.com](mailto:sanketsharma9510@gmail.com)
+* ✉️  You can contact me at [sanketsharma1902@gmail.com](mailto:sanketsharma9510@gmail.com)
 * 🚀  I'm currently working on [Secure shell Honeypot-Trap-Mater](http://https://github.com/sn0x-sharma/SSH-Honeypot-Trap-master-)
 * 🧠  I'm learning EJPTv2 ,OSCP , Blockchain security ,Web3 and build a Decentralized App.
 * 🤝  I'm open to collaborating on WEB-Payloads.HUB
