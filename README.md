@@ -1,7 +1,7 @@
 Hi 👋 My name is sanket sharma AKA sn0x
 =======================================
 
-Cyber security researcher and Machine learning engineer , Bug bounty hunter , CEHv11 , EWPTXv2 , AWS , RHCSA certified. Hall of Fame : Tesla (2021) / Global all time ranking :  Hacker rank Top 300 (2021) , Hack the box Top 200 (2021) ,Cryptohack top 200 TryHackMe global #2, India #1 (2024).
+AI Security & Offensive Security Researcher • @TESLA HOF | CPTS | CWES | CJCA  | CRTOM | EWPTXv2 | CEHv11-12 | CNSP | GRC | RHCSA | OSCP (Ongoing)
 -----------------------------------------------------------------------------------------------------------------------
 
 Cyber security Researcher and extensive knowledge of Information Security along with other Computer Science domains. Detail-oriented with excellent observational, organizational and communication skills with strong interest in ethical hacking, penetration testing, vulnerability analysis, and network security. Hard-working, energetic, personable, and technical-minded individual. Possess exceptional customer service and communication skills with the strong ability to multitask and resolve issues quickly.
