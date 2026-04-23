@@ -289,7 +289,4 @@ Safecracker is a brilliantly constructed DFIR challenge combining real-world TTP
 * Memory execution
 * Reversible ransomware payload
 
-<figure><img src="../../../.gitbook/assets/complete (33).gif" alt=""><figcaption></figcaption></figure>
-
-
-
+<figure><img src="../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

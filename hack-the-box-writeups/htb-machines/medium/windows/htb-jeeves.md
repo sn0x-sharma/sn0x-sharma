@@ -6,8 +6,6 @@ icon: user-secret
 
 <figure><img src="../../../../.gitbook/assets/image (242).png" alt=""><figcaption></figcaption></figure>
 
-
-
 SYNOPSIS Jeeves is not overly complicated, however it focuses on some interesting techniques and provides a great learning experience. As the use of alternate data streams is not very common, some users may have a hard time locating the correct escalation path.
 
 Skills Required ● Intermediate knowledge of Windows ● Knowledge of basic web fuzzing techniques
@@ -125,8 +123,6 @@ Starting gobuster in directory enumeration mode
 Lets Visit : `/error.html`
 
 <figure><img src="../../../../.gitbook/assets/image (236).png" alt=""><figcaption></figcaption></figure>
-
-
 
 In Recon part We found :
 
@@ -292,4 +288,4 @@ more < hm.txt:root.txt:$DATA
 
 ROOTED
 
-<figure><img src="../../../../.gitbook/assets/complete (17).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

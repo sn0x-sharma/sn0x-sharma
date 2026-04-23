@@ -68,8 +68,6 @@ Sometimes **nginx** ACL rules can be bypassed by adding characters that are **no
 Using `%0A` in the address bar lets me bypass the check easily in **Firefox** and I can access the metrics page. There are all kinds of information regarding **MinIO** available, notably the version `2023-03-13T19:46:17Z` and the endpoint url `http://prd23-s3-backend.skyfall.htb/minio/v2/metrics/cluster`.\
 Apparently there are at least two known vulnerabilities for that version<sup>2</sup> and there are PoCs available for [CVE-2023-28432](https://github.com/acheiii/CVE-2023-28432), an information disclosure vulnerability, and [CVE-2023-28434](https://github.com/AbelChe/evil_minio), a remote code execution vulnerability.
 
-
-
 In order to use the information disclosure vulnerability I just have to send a **POST** request to `http://prd23-s3-backend.skyfall.htb/minio/bootstrap/v1/verify` and the application will happily return its configuration.
 
 ```python
@@ -479,4 +477,4 @@ dev_otp_key_role
 ./vault ssh -role admin_otp_key_role -mode otp -strict-host-key-checking=no root@skyfall.htb
 ```
 
-<figure><img src="../../../../.gitbook/assets/complete (30).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

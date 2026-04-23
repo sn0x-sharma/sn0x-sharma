@@ -6,7 +6,7 @@ icon: mountain
 
 <figure><img src="../../../../.gitbook/assets/image (529).png" alt=""><figcaption></figcaption></figure>
 
-## Attack Flow&#x20;
+## Attack Flow
 
 <figure><img src="../../../../.gitbook/assets/image (530).png" alt=""><figcaption></figcaption></figure>
 
@@ -724,7 +724,6 @@ faketime -f +7h evil-winrm -i dc01.mirage.htb \
 type C:\Users\Administrator\Desktop\root.txt
 ```
 
-<figure><img src="../../../../.gitbook/assets/complete (36).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>
 
 <figure><img src="../../../../.gitbook/assets/image (525).png" alt=""><figcaption></figcaption></figure>
-

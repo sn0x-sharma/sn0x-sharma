@@ -6,7 +6,7 @@ coverY: -6.295411690760528
 
 # HTB-AIRTOUCH
 
-<figure><img src="../../../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
 ## Reconnaissance <a href="#reconnaissance" id="reconnaissance"></a>
 
@@ -24,7 +24,7 @@ PORT   STATE SERVICE VERSION
 
 Only SSH on TCP. That's... actually a hint that the interesting stuff is elsewhere. The TTL came back as 62 instead of the usual 63/64 you'd expect for Linux one hop away that extra -1 means we're probably talking to a container sitting behind some NAT, not the box directly.
 
-<figure><img src="../../../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
 
 One port on TCP isn't much to go on. Time to check UDP.
 
@@ -41,7 +41,7 @@ PORT    STATE SERVICE
 
 SNMP on 161. And it just... handed us a password in the system description. That's the box telling us: hey, start here. The sysDescr field in SNMP is just a freeform text string whoever set this up put credentials in it intentionally as the entry point.
 
-<figure><img src="../../../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 If you don't want to wait on nmap UDP (it's genuinely painful, like 30+ minutes), there's a faster option:
 
@@ -100,7 +100,7 @@ These turn out to be network diagrams one handdrawn, one computer-generated show
 | Tablets    | AirTouch-Internet | 192.168.3.0/24 |
 | Corporate  | AirTouch-Office   | 10.10.10.0/24  |
 
-We're on Consultant at 172.20.1.2. We need to get into Tablets, then Corp. The diagrams also show 7 wireless interfaces on this machine  all down by default  and tools like `eaphammer` in `/root`. The box is basically telling us the attack path.
+We're on Consultant at 172.20.1.2. We need to get into Tablets, then Corp. The diagrams also show 7 wireless interfaces on this machine all down by default and tools like `eaphammer` in `/root`. The box is basically telling us the attack path.
 
 ### Privesc to root on Consultant
 
@@ -122,7 +122,7 @@ root@AirTouch-Consultant:~#
 
 ***
 
-## Wireless Recon&#x20;
+## Wireless Recon
 
 ### Scanning the Air
 
@@ -186,7 +186,7 @@ root@AirTouch-Consultant:~# aireplay-ng --deauth 5 -a F0:9F:C2:A3:F1:A7 -c 28:6C
 [...5 rounds...]
 ```
 
-Deauth frames tell the client "you've been disconnected"  it reconnects automatically, which triggers the 4-way handshake. airodump picks it up. Ctrl-C the capture.
+Deauth frames tell the client "you've been disconnected" it reconnects automatically, which triggers the 4-way handshake. airodump picks it up. Ctrl-C the capture.
 
 Transfer the `.cap` file back to our machine:
 
@@ -195,7 +195,7 @@ Transfer the `.cap` file back to our machine:
 └─$ sshpass -p RxBlZhLmOkacNWScmZ6D scp consultant@10.129.244.98:/tmp/airtouch_capture-01.cap .
 ```
 
-## Aircrack-ng - Method 1 &#x20;
+## Aircrack-ng - Method 1
 
 ```
 ┌──(sn0x㉿sn0x)-[~/HTB/AirTouch]
@@ -206,7 +206,7 @@ Transfer the `.cap` file back to our machine:
 KEY FOUND! [ challenge ]
 ```
 
-## Cowpatty (slower but more verbose) - Method 2&#x20;
+## Cowpatty (slower but more verbose) - Method 2
 
 ```
 ┌──(sn0x㉿sn0x)-[~/HTB/AirTouch]
@@ -218,7 +218,7 @@ The PSK is "challenge".
 7871 passphrases tested in 13.33 seconds
 ```
 
-## Decrypt traffic instead of cracking - Method 3&#x20;
+## Decrypt traffic instead of cracking - Method 3
 
 Alternatively, if you already know the PSK (or find it another way), you can decrypt the existing captured packets directly:
 
@@ -227,7 +227,7 @@ Alternatively, if you already know the PSK (or find it another way), you can dec
 └─$ airdecap-ng -p 'challenge' -b F0:9F:C2:A3:F1:A7 -e 'AirTouch-Internet' airtouch_capture-01.cap
 ```
 
-Then `strings` on the decrypted output reveals plaintext HTTP traffic  including login credentials and session cookies from whoever was using the network. We'll see why this matters in a second.
+Then `strings` on the decrypted output reveals plaintext HTTP traffic including login credentials and session cookies from whoever was using the network. We'll see why this matters in a second.
 
 ***
 
@@ -270,11 +270,11 @@ Set up an SSH SOCKS proxy to tunnel browser traffic through:
 └─$ ssh -D 1080 -N consultant@10.129.244.98
 ```
 
-Configure your browser (or Burp) to use `SOCKS5 127.0.0.1:1080`. Now hit `http://192.168.3.1`  it redirects to `/login.php`.
+Configure your browser (or Burp) to use `SOCKS5 127.0.0.1:1080`. Now hit `http://192.168.3.1` it redirects to `/login.php`.
 
 <figure><img src="../../../../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
 
-## Direct login with manager creds - Method 1&#x20;
+## Direct login with manager creds - Method 1
 
 If you used `airdecap-ng` earlier and ran `strings` on the decrypted capture, you'd have seen:
 
@@ -284,7 +284,7 @@ Username=manager&Password=2wLFYNh4TSTgA5sNgT4&Submit=Login
 
 Plus a valid session cookie. Manager creds from the decrypted traffic. Log in directly.
 
-## Replay session cookie from traffic - Method 2&#x20;
+## Replay session cookie from traffic - Method 2
 
 The decrypted traffic also contains:
 
@@ -326,7 +326,7 @@ This is why it's exploitable: `setcookie('UserRole', $logins[$Username]['role'],
 
 ***
 
-## File Upload&#x20;
+## File Upload
 
 <figure><img src="../../../../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
 

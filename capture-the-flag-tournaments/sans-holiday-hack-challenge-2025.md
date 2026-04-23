@@ -393,7 +393,7 @@ Breaking down the SAS token parameters: `sp=rlacwdx` grants read, list, add, cre
 
 ### The Open Door
 
-<figure><img src="../.gitbook/assets/image (74).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (73).png" alt=""><figcaption></figcaption></figure>
 
 The objective is identifying a Network Security Group rule that exposes a sensitive management port directly to the public internet.
 
@@ -847,7 +847,7 @@ The chain demonstrates OQS-SSH (Open Quantum Safe SSH) — a fork of OpenSSH tha
 
 <figure><img src="../.gitbook/assets/image (88).png" alt=""><figcaption></figcaption></figure>
 
-The challenge provides a Commodore 64 BASIC program. Reading the source directly in a text editor is sufficient  no emulator needed:
+The challenge provides a Commodore 64 BASIC program. Reading the source directly in a text editor is sufficient no emulator needed:
 
 ```basic
 10 REM *** COMMODORE 64 SECURITY SYSTEM ***
@@ -1213,7 +1213,7 @@ Flag: `8ade723d-9968-45c9-9c33-7606c49c2201`
 
 ### Schrodinger's Scope
 
-<figure><img src="../.gitbook/assets/image (96).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (95).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src="../.gitbook/assets/image (97).png" alt=""><figcaption></figcaption></figure>
 
@@ -1674,7 +1674,7 @@ Snowblind Ambush
 
 ***
 
-### Techniques&#x20;
+### Techniques
 
 | Technique                                                     | Where Used                    |
 | ------------------------------------------------------------- | ----------------------------- |

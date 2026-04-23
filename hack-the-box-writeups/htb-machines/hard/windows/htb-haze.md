@@ -4,7 +4,7 @@ icon: traffic-light-stop
 
 # HTB-HAZE
 
-<figure><img src="../../../../.gitbook/assets/image (252).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (251).png" alt=""><figcaption></figcaption></figure>
 
 **Initial Access:**
 
@@ -113,7 +113,7 @@ Performing a standard **Nmap scan** reveals that the target is a **Domain Contro
 
 Exploring the **Splunk Atom Feed** at `https://haze.htb:8089` reveals the **running Splunk version**. Since a Splunk installation is unusual on this machine, I begin investigating potential **vulnerabilities and exploits** related to it.
 
-#### Add to `Etc/hosts`&#x20;
+#### Add to `Etc/hosts`
 
 ```python
 ┌──(sn0x㉿sn0x)-[~/hackthebox/HAZE/CVE-2024-36991]
@@ -181,63 +181,63 @@ Examining the exploit code reveals that it can be simplified into a **single `cU
 
 <summary>List of Configurations</summary>
 
-alert\_actions.conf\
-app.conf\
-audit.conf\
-authentication.conf\
-authorize.conf\
-bookmarks.conf\
-checklist.conf\
-collections.conf\
-commands.conf\
-datamodels.conf\
-deploymentclient.conf\
-distsearch.conf\
-event\_renderers.conf\
-eventtypes.conf\
-federated.conf\
-fields.conf\
-global-banner.conf\
-health.conf\
-indexes.conf\
-inputs.conf\
-limits.conf\
-literals.conf\
-macros.conf\
-messages.conf\
-metric\_rollups.conf\
-multikv.conf\
-outputs.conf\
-passwords.conf\
-procmon-filters.conf\
-props.conf\
-pubsub.conf\
-restmap.conf\
-rolling\_upgrade.conf\
-savedsearches.conf\
-searchbnf.conf\
-segmenters.conf\
-server.conf\
-serverclass.conf\
-serverclass.seed.xml.conf\
-source-classifier.conf\
-sourcetypes.conf\
-tags.conf\
-telemetry.conf\
-times.conf\
-transactiontypes.conf\
-transforms.conf\
-ui-prefs.conf\
-user-prefs.conf\
-user-seed.conf\
-visualizations.conf\
-viewstates.conf\
-web.conf\
-web-features.conf\
-wmi.conf\
-workflow\_actions.conf\
-workload\_policy.conf\
-workload\_pools.conf\
+alert\_actions.conf\
+app.conf\
+audit.conf\
+authentication.conf\
+authorize.conf\
+bookmarks.conf\
+checklist.conf\
+collections.conf\
+commands.conf\
+datamodels.conf\
+deploymentclient.conf\
+distsearch.conf\
+event\_renderers.conf\
+eventtypes.conf\
+federated.conf\
+fields.conf\
+global-banner.conf\
+health.conf\
+indexes.conf\
+inputs.conf\
+limits.conf\
+literals.conf\
+macros.conf\
+messages.conf\
+metric\_rollups.conf\
+multikv.conf\
+outputs.conf\
+passwords.conf\
+procmon-filters.conf\
+props.conf\
+pubsub.conf\
+restmap.conf\
+rolling\_upgrade.conf\
+savedsearches.conf\
+searchbnf.conf\
+segmenters.conf\
+server.conf\
+serverclass.conf\
+serverclass.seed.xml.conf\
+source-classifier.conf\
+sourcetypes.conf\
+tags.conf\
+telemetry.conf\
+times.conf\
+transactiontypes.conf\
+transforms.conf\
+ui-prefs.conf\
+user-prefs.conf\
+user-seed.conf\
+visualizations.conf\
+viewstates.conf\
+web.conf\
+web-features.conf\
+wmi.conf\
+workflow\_actions.conf\
+workload\_policy.conf\
+workload\_pools.conf\
 workload\_rules.conf
 
 </details>
@@ -689,7 +689,7 @@ $ cat etc/passwd
 
 With this password I can now log into the Splunk instance as an administrator user.
 
-<figure><img src="../../../../.gitbook/assets/image (180).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (179).png" alt=""><figcaption></figcaption></figure>
 
 While looking through the **BloodHound** data collected with `mark.adams` I’ve noticed some accounts missing that were present in the `rid-brute`. Therefore I run the collection again with the `HAZE-IT-BACKUP$` account by providing the hash `84D6A733D85D9E03F46EBA25B34517A9`.
 
@@ -726,7 +726,7 @@ INFO: Compressing output into 20250518165100_bloodhound.zip
 
 After importing the new data into **BloodHound**, a **new edge** to **`edward.martin`** becomes visible. The service account has the ability to **modify the owner** of the **`SUPPORT_SERVICES`** group, effectively adding itself, and can then use **Shadow Credentials** to escalate privileges to the **`edward.martin`** account.
 
-<figure><img src="../../../../.gitbook/assets/image (182).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (181).png" alt=""><figcaption></figcaption></figure>
 
 First, I **change the owner** of the **`SUPPORT_SERVICES`** group from `HAZE-IT-BACKUP$` to **`bloodyAD`**. This lets me grant **`GenericAll`** permissions and then **add the account** back into the group itself.
 
@@ -1114,4 +1114,4 @@ Credentials:
 [...]
 ```
 
-<figure><img src="../../../../.gitbook/assets/complete (21).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

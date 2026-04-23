@@ -28,9 +28,9 @@ PORT     STATE SERVICE       VERSION
 [...snip...]
 ```
 
-two web ports and SMB open. IIS on 80 is usually nothing but the tomcat on 8080 caught my eye immediately  java apps running on tomcat tend to have interesting attack surface. SMB is always worth poking at for null sessions on windows boxes.
+two web ports and SMB open. IIS on 80 is usually nothing but the tomcat on 8080 caught my eye immediately java apps running on tomcat tend to have interesting attack surface. SMB is always worth poking at for null sessions on windows boxes.
 
-### Website on 80&#x20;
+### Website on 80
 
 <figure><img src="../../../../.gitbook/assets/image (19).png" alt=""><figcaption></figcaption></figure>
 
@@ -90,7 +90,7 @@ or anyone else doesn't have unauthenticated access to it. - Bruce
 backup.img: LUKS encrypted file, ver 1 [aes, xts-plain64, sha256] UUID: d931ebb1-5edc-4453-8ab1-3d23bb85b38e
 ```
 
-LUKS encrypted disk image. the note mentions Alfred and Bruce  box is batman themed so the password is probably something batman related. worth trying a filtered wordlist rather than the whole rockyou.
+LUKS encrypted disk image. the note mentions Alfred and Bruce box is batman themed so the password is probably something batman related. worth trying a filtered wordlist rather than the whole rockyou.
 
 #### Cracking the LUKS Image
 
@@ -139,7 +139,7 @@ this is the key finding. the config tells us:
 
 this means we can forge the `javax.faces.ViewState` parameter — the app will trust whatever serialized object we send it as long as we sign and encrypt it correctly with this key.
 
-#### Web App  Port 8080
+#### Web App Port 8080
 
 <figure><img src="../../../../.gitbook/assets/image (20).png" alt=""><figcaption></figcaption></figure>
 
@@ -346,7 +346,7 @@ the image is a screenshot showing Batman's password: **`Zx^#QZX+T!123`**
 
 the OST is Alfred's Outlook offline folder. the Drafts folder had an unsent email to Batman telling him to stop forgetting his password with a screenshot of it attached. classic opsec failure.
 
-#### Lateral Movement  - Alfred to Batman via PSSession
+#### Lateral Movement - Alfred to Batman via PSSession
 
 batman is in the `Administrators` and `Remote Management Users` groups — PSSession lateral movement is possible.
 
@@ -391,7 +391,7 @@ arkham\batman
 
 #### Root Flag UNC Path Admin Share Bypass
 
-batman is an Administrator but UAC is in the way  running in a low integrity context. the quick path here is accessing the admin share over UNC localhost, which bypasses UAC token filtering entirely:
+batman is an Administrator but UAC is in the way running in a low integrity context. the quick path here is accessing the admin share over UNC localhost, which bypasses UAC token filtering entirely:
 
 ```cmd
 C:\Users\Batman\Documents> type \\localhost\c$\users\administrator\desktop\root.txt
@@ -456,4 +456,4 @@ PSSession as Batman → nc reverse shell
 | UAC Bypass           | UNC localhost admin share (`\\localhost\c$`) bypasses token filtering       |
 | SMB File Transfer    | `impacket-smbserver` with SMB2 + credentials (guest blocked on Server 2019) |
 
-<figure><img src="../../../../.gitbook/assets/complete (39).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

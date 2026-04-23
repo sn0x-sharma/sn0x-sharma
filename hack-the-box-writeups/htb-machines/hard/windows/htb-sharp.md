@@ -672,4 +672,4 @@ Administrator NTLM: `9e2ede4a0c81d4ca7630ef1e8d30afb7`. Could use this for pass-
 
 ***
 
-<figure><img src="../../../../.gitbook/assets/complete (38).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

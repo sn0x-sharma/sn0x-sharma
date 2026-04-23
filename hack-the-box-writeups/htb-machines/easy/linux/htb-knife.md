@@ -203,4 +203,4 @@ a919debe2bb33847a7b54b7ed4384a74
 
 machine is rooted !
 
-<figure><img src="../../../../.gitbook/assets/complete (7).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

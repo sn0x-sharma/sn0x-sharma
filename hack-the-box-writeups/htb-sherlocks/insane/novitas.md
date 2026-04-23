@@ -46,13 +46,13 @@ NtMajorVersion              10
 NtMinorVersion              0
 ```
 
-`Is64Bit: True` tells us we're on a 64-bit system, which matters when you're looking at memory addresses  they'll all be 64-bit pointers. `Major/Minor 15.19041` decodes to Windows 10 build 19041, which is the 2004/20H1 release. Good to know. System time is `2024-09-05 16:01:34 UTC`. We'll cross-reference this with process timestamps later.
+`Is64Bit: True` tells us we're on a 64-bit system, which matters when you're looking at memory addresses they'll all be 64-bit pointers. `Major/Minor 15.19041` decodes to Windows 10 build 19041, which is the 2004/20H1 release. Good to know. System time is `2024-09-05 16:01:34 UTC`. We'll cross-reference this with process timestamps later.
 
 ***
 
 ### Q1: When Does the Suspicious Process Start?
 
-#### Primary Method  Process Tree via Volatility
+#### Primary Method Process Tree via Volatility
 
 Now we run the process tree plugin. This shows every running process and their parent-child relationships. The goal is to find something that looks out of place wrong parent, wrong path, or a legit-sounding binary doing something weird.
 
@@ -77,9 +77,9 @@ There it is. `mmc.exe` (PID 3120) launched at `2024-09-05 15:58:11 UTC`, and its
 
 #### Why This Matters
 
-This single process tree entry tells us everything about the initial execution. The attacker didn't use powershell.exe or wscript.exe  both of which have heavy detections. They used `mmc.exe`. Most SIEMs and EDRs don't flag `mmc.exe` spawns by default because sysadmins use it constantly. That's clever.
+This single process tree entry tells us everything about the initial execution. The attacker didn't use powershell.exe or wscript.exe both of which have heavy detections. They used `mmc.exe`. Most SIEMs and EDRs don't flag `mmc.exe` spawns by default because sysadmins use it constantly. That's clever.
 
-### Alternative Attack Vector  How Else Could This Have Been Detected?
+### Alternative Attack Vector How Else Could This Have Been Detected?
 
 If you didn't have the process tree, you could also catch this through:
 
@@ -201,7 +201,7 @@ Two distinct filenames show up: `family_image.msc` and `family_image.obj`. The `
 
 #### Why This Matters
 
-The `.obj` file is interesting because `.obj` files are normally compiler output (object files before linking). Using that extension for a malicious payload is intentional misdirections  it looks less suspicious to a casual observer than `.exe` or `.dll`.
+The `.obj` file is interesting because `.obj` files are normally compiler output (object files before linking). Using that extension for a malicious payload is intentional misdirections it looks less suspicious to a casual observer than `.exe` or `.dll`.
 
 ***
 
@@ -228,7 +228,7 @@ Now we have a process-level memory dump we can load into WinDbg or dotnet-dump f
 
 ### Q4: How Many NAT (Native) Modules Are Loaded?
 
-#### Primary Method ,  dotnet-dump Module Listing
+#### Primary Method , dotnet-dump Module Listing
 
 The key concept here: inside a .NET process, modules fall into two categories. **NAT (Native) modules** are regular unmanaged DLLs — `ntdll.dll`, `kernel32.dll`, etc. **CLR modules** are managed .NET assemblies — things like `mscorlib.dll`, `System.dll`, and any custom assemblies loaded by the app.
 
@@ -257,7 +257,7 @@ You can also do this in WinDbg by loading the minidump and running `!peb` to see
 
 ### Q5: Assembly Addresses of All CLR Modules in Ascending Order
 
-#### Primary Method  `!dumpdomain` in dotnet-dump
+#### Primary Method `!dumpdomain` in dotnet-dump
 
 `!dumpdomain` enumerates all .NET AppDomains in the process and shows every loaded assembly with its base address and metadata.
 
@@ -281,7 +281,7 @@ AppDomain enumeration is one of the most powerful techniques for detecting in-me
 
 ### Q6: What is the Name of the Malicious Module?
 
-#### Primary Method  Anomaly in `!dumpdomain` Output
+#### Primary Method Anomaly in `!dumpdomain` Output
 
 Looking through the `!dumpdomain` output, all the assemblies are standard Windows .NET system libraries except for one:
 
@@ -296,11 +296,11 @@ Module Name:
 
 A few things immediately scream malicious here:
 
-The name is a GUID-style hex string  `Ad00bce9305554c87927205710b17699f`. Real .NET system libraries have human-readable names like `System.Xml` or `mscorlib`. Random hex names are a classic indicator of dynamically generated or obfuscated .NET payloads.
+The name is a GUID-style hex string `Ad00bce9305554c87927205710b17699f`. Real .NET system libraries have human-readable names like `System.Xml` or `mscorlib`. Random hex names are a classic indicator of dynamically generated or obfuscated .NET payloads.
 
 `PublicKeyToken=null` means the assembly is not strongly signed. All legitimate Microsoft .NET assemblies in the GAC are strongly signed. No strong name = custom assembly, no chain of trust.
 
-There's no physical file path associated with it, meaning it was loaded entirely from memory  never touched disk. This is reflective loading / in-memory execution.
+There's no physical file path associated with it, meaning it was loaded entirely from memory never touched disk. This is reflective loading / in-memory execution.
 
 **Answer: `Ad00bce9305554c87927205710b17699f`**
 
@@ -310,7 +310,7 @@ There's no physical file path associated with it, meaning it was loaded entirely
 
 ### Q7: MD5 Hash of the Dumped Malicious DLL
 
-#### Primary Method |  Raw Memory Dump via WinDbg `.writemem`
+#### Primary Method | Raw Memory Dump via WinDbg `.writemem`
 
 `!dlldump` in dotnet-dump can pull the module, but the resulting bytes are in PE layout which gets scrambled. The clean approach is to use WinDbg's `.writemem` to dump raw memory bytes directly from the known base address.
 
@@ -390,7 +390,7 @@ throw new NotSupportedException(
 );
 ```
 
-The XOR key is the second argument: `a7ad965a-50b4-4846-bfb2-2282839f8d0c`. It looks like a GUID. Hiding cryptographic keys inside what appear to be GUIDs is a nice trick  it blends in visually if someone just scans for strings.
+The XOR key is the second argument: `a7ad965a-50b4-4846-bfb2-2282839f8d0c`. It looks like a GUID. Hiding cryptographic keys inside what appear to be GUIDs is a nice trick it blends in visually if someone just scans for strings.
 
 **Answer: `a7ad965a-50b4-4846-bfb2-2282839f8d0c`**
 
@@ -593,4 +593,4 @@ f7efce4bac431a5c703e73cce7c5f7c7 *decoded_output.bin
 
 <figure><img src="../../../.gitbook/assets/image (651).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../../../.gitbook/assets/complete (38).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

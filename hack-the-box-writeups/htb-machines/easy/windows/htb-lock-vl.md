@@ -6,8 +6,6 @@ icon: lock
 
 <figure><img src="../../../../.gitbook/assets/image (168).png" alt=""><figcaption></figcaption></figure>
 
-
-
 **Attack Flow Explanation :**
 
 1. **Recon** → Found Gitea + Web Server
@@ -412,4 +410,4 @@ type C:\Users\Administrator\Desktop\root.txt
 * [Google Project Zero Symbolic Link Testing Tools](https://github.com/googleprojectzero/symboliclink-testing-tools)
 * [mRemoteNG Decrypt Tool](https://github.com/kmahyyg/mremoteng-decrypt)
 
-<figure><img src="../../../../.gitbook/assets/complete (35).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

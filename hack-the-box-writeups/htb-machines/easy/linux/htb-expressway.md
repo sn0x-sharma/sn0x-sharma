@@ -6,7 +6,7 @@ coverY: 0.6848711872437303
 
 # HTB-EXPRESSWAY
 
-## Reconnaissance&#x20;
+## Reconnaissance
 
 #### Port Scanning
 
@@ -151,7 +151,7 @@ Guess.Base.......: File (/usr/share/wordlists/rockyou.txt)
 
 Cracked in 11 seconds. PSK is `freakingrockstarontheroad`. The PSK is also the user's SSH password — a common reuse pattern in VPN deployments where the same credential services both the tunnel and the host.
 
-Or You can use `psk-crack`&#x20;
+Or You can use `psk-crack`
 
 #### PSK Cracking
 
@@ -515,4 +515,4 @@ The `-R` parameter causes sudo to chroot into the controlled environment, loadin
 | CVE-2025-32463 — sudo `--chroot` NSS library injection       | Privilege escalation (alternate path) |
 | Malicious shared library with `__attribute__((constructor))` | CVE-2025-32463 payload                |
 
-<figure><img src="../../../../.gitbook/assets/complete (37).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

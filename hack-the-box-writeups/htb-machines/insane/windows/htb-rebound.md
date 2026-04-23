@@ -1122,4 +1122,4 @@ Administrator:176be138594933bb67db3b2572fc91b8
 
 ***
 
-<figure><img src="../../../../.gitbook/assets/complete (36).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

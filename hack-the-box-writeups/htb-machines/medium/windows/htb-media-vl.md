@@ -343,4 +343,4 @@ Attack Chain Overview
    * Executed GodPotato.exe for final escalation to SYSTEM
    * Retrieved administrator flag
 
-<figure><img src="../../../../.gitbook/assets/complete (35).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

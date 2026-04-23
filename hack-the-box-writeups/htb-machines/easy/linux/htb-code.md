@@ -304,4 +304,4 @@ task.json
 
 ```
 
-<figure><img src="../../../../.gitbook/assets/complete (2).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

@@ -50,8 +50,6 @@ Forensic Share → Memory Dump → Pass-the-Hash → SeBackupPrivilege → Domai
 * **Pass-the-Hash**: Gained Administrator shell via Evil-WinRM
 * **Root Flag**: Complete domain takeover achieved
 
-
-
 ### Reconnaissance
 
 #### Port Scanning with Rustscan + Nmap
@@ -974,4 +972,4 @@ Info: Establishing connection to remote endpoint
 
 ```
 
-<figure><img src="../../../../.gitbook/assets/complete (34).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

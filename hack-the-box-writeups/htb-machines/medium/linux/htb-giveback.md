@@ -220,7 +220,7 @@ Status: Exhausted
 
 Not crackable with rockyou. This path is a dead end — we move to the internal service instead.
 
-#### CDK  Kubernetes Container Recon Tool
+#### CDK Kubernetes Container Recon Tool
 
 CDK is a post-exploitation framework designed for containerized environments. Build it on the attacker machine and transfer it:
 
@@ -379,7 +379,7 @@ After the tunnel is up, `http://10.42.1.184:5000` is directly accessible in the 
 
 ***
 
-### Second RCE  PHP-CGI Argument Injection (CVE-2012-1823)
+### Second RCE PHP-CGI Argument Injection (CVE-2012-1823)
 
 #### Discovering the Internal Service
 
@@ -548,7 +548,7 @@ echo -n "c1c1c3A0c3BhM3U3Ukx5ZXRyZWtFNG9T" | base64 -d
 
 ***
 
-### &#x20;SSH Access — User Flag
+### SSH Access — User Flag
 
 We have a username (`babywyrm` from the secret name) and the `MASTERPASS` value. Try SSH:
 
@@ -569,7 +569,7 @@ babywyrm@giveback:~$ cat user.txt
 
 ***
 
-### &#x20;Privilege Escalation via runc
+### Privilege Escalation via runc
 
 #### Check Sudo Permissions
 
@@ -764,4 +764,4 @@ ROOT
 
 The WordPress pod had no ServiceAccount token but it leaked everything via environment variables, including the internal service endpoint. The internal CGI pod was an entirely separate workload with an overprivileged ServiceAccount that could read all secrets in the default namespace. Secrets for different services were stored in the same namespace with no RBAC isolation. The sudo binary `/opt/debug` was runc disguised with a password check but once authenticated, it provided full OCI container control as root with no seccomp, no namespace restrictions, and direct access to the host filesystem through bind mounts.
 
-<figure><img src="../../../../.gitbook/assets/complete (37).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

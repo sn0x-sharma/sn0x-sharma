@@ -694,4 +694,4 @@ ssh -i jail_root root@10.10.10.34
 | POSIX ACL via NFS                                                     | Understanding why UID 1000 could read `logreader/` despite `drwxr-x---` permissions  |
 | SUID+SGID NFS binary (alternative path)                               | Alternate frank→adm escalation: mapping UID 3 locally to adm (UID 3) on Jail         |
 
-<figure><img src="../../../../.gitbook/assets/complete (37).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

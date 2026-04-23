@@ -633,8 +633,6 @@ blazorized\nu_1055
 
 This gives me a user shell on the target machine, from which I can successfully retrieve the **user flag**.
 
-
-
 ### Privilege Escalation <a href="#privilege-escalation" id="privilege-escalation"></a>
 
 ## Shell as RSA\_4810 <a href="#shell-as-rsa_4810" id="shell-as-rsa_4810"></a>
@@ -656,7 +654,7 @@ Inside BloodHound, I:
 * Marked `NU_1055` as **Owned** (current access level).
 * Marked `RSA_4810` and `SSA_6010` as **High Value Targets (HVTs)** for lateral movement planning.
 
-<figure><img src="../../../../.gitbook/assets/image (436).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (435).png" alt=""><figcaption></figcaption></figure>
 
 The analysis revealed:
 
@@ -883,7 +881,7 @@ About a minute later, multiple **Sliver sessions** connect back to my machine. T
 
 With a shell as **SSA\_6010**, I now have the privileges to perform a **DCSync** attack. This allows me to replicate the Domain Controller and dump all the **NTLM hashes** of the domain users.
 
-#### Or You Can Also Do&#x20;
+#### Or You Can Also Do
 
 I verify that I have write access to `\\dc1\netlogon\A32FF3AEAA23` and upload a `.bat` file containing a **Base64-encoded PowerShell reverse shell** using `smbclient`:
 
@@ -1043,4 +1041,4 @@ Info: Establishing connection to remote endpoint
 
 ```
 
-<figure><img src="../../../../.gitbook/assets/complete (19).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

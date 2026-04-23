@@ -305,4 +305,4 @@ www.blacklanternsecurity.com/bbot
 [WARN] You killed sneaky_richard
 ```
 
-<figure><img src="../../../../.gitbook/assets/complete (15).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

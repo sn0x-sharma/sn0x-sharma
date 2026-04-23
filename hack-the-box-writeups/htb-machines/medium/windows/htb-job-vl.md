@@ -853,7 +853,7 @@ listening on [any] 4444 ...
 [*] SYSTEM shell spawned!
 ```
 
-#### Step 7: Root Shell Received!&#x20;
+#### Step 7: Root Shell Received!
 
 **Netcat listener:**
 
@@ -906,4 +906,4 @@ SeDebugPrivilege                          Debug programs                        
 <SNIP>
 ```
 
-<figure><img src="../../../../.gitbook/assets/complete (35).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

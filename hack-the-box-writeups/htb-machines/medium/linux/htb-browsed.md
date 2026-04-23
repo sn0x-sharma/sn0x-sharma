@@ -35,7 +35,7 @@ Just two ports. SSH is usually a dead end without creds, so web it is. The OpenS
 
 <figure><img src="../../../../.gitbook/assets/image (656).png" alt=""><figcaption></figcaption></figure>
 
-Navigating to `http://10.10.8.1` shows a browser extension marketplace kind of site called "Browsed". The header leaks a domain name, so I add `browsed.htb` to `/etc/hosts`. Looking around the site there are three main pages  the homepage, a samples page with downloadable example extensions, and an upload page at `/upload.php` where you can submit Chrome extensions for a developer to review.
+Navigating to `http://10.10.8.1` shows a browser extension marketplace kind of site called "Browsed". The header leaks a domain name, so I add `browsed.htb` to `/etc/hosts`. Looking around the site there are three main pages the homepage, a samples page with downloadable example extensions, and an upload page at `/upload.php` where you can submit Chrome extensions for a developer to review.
 
 <figure><img src="../../../../.gitbook/assets/image (657).png" alt=""><figcaption></figcaption></figure>
 
@@ -58,7 +58,7 @@ Nothing else interesting from feroxbuster.
 
 #### Chrome Logs and VHost Discovery
 
-I download one of the sample extensions from the samples page, zip it up and upload it. The upload hangs for a few seconds then returns a massive wall of Chrome debug logs. This tells us something important  the site is running a headless Chrome instance to "review" uploaded extensions. An actual browser is loading whatever we upload.
+I download one of the sample extensions from the samples page, zip it up and upload it. The upload hangs for a few seconds then returns a massive wall of Chrome debug logs. This tells us something important the site is running a headless Chrome instance to "review" uploaded extensions. An actual browser is loading whatever we upload.
 
 Digging through the log output, I grep for URL requests:
 
@@ -110,7 +110,7 @@ Receiving objects: 100% (15/15), done.
 
 ### Source Code Review
 
-The repo contains two key files  `app.py` which is a Flask app, and `routines.sh` which is a Bash maintenance script.
+The repo contains two key files `app.py` which is a Flask app, and `routines.sh` which is a Bash maintenance script.
 
 #### app.py Analysis
 
@@ -174,11 +174,11 @@ The attack chain is: SSRF via Chrome extension → reach the internal Flask app 
 
 #### Why This Works
 
-When we upload an extension, headless Chrome loads and executes it. Chrome extension service workers run in a background context that isn't subject to the same CORS restrictions as content scripts. If we declare `host_permissions` for localhost, the service worker can freely make requests to `127.0.0.1`  giving us SSRF into any internal service.
+When we upload an extension, headless Chrome loads and executes it. Chrome extension service workers run in a background context that isn't subject to the same CORS restrictions as content scripts. If we declare `host_permissions` for localhost, the service worker can freely make requests to `127.0.0.1` giving us SSRF into any internal service.
 
 <figure><img src="../../../../.gitbook/assets/image (658).png" alt=""><figcaption></figcaption></figure>
 
-You can Check Here For More Details&#x20;
+You can Check Here For More Details
 
 {% embed url="https://hacktricks.wiki/en/pentesting-web/browser-extension-pentesting-methodology/index.html#main-components" %}
 
@@ -355,11 +355,11 @@ drwxrwxr-x 5 root root 4096 Mar 23  2025 extensions
 drwxrwxrwx 2 root root 4096 Dec 11 07:57 __pycache__
 ```
 
-The `__pycache__` directory is `777`  world writable. That's the key finding here. The main script imports from `extension_utils`, and Python will use cached bytecode from `__pycache__` if it exists and appears fresh. If we can replace that bytecode with something malicious, it'll execute as root when we run the script with sudo.
+The `__pycache__` directory is `777` world writable. That's the key finding here. The main script imports from `extension_utils`, and Python will use cached bytecode from `__pycache__` if it exists and appears fresh. If we can replace that bytecode with something malicious, it'll execute as root when we run the script with sudo.
 
 #### Understanding Python's Bytecode Cache
 
-When Python imports a module, it checks `__pycache__` for a compiled `.pyc` file. The freshness check is timestamp-based: if the `.pyc` modification time is greater than or equal to the source `.py` file's mtime, Python trusts the bytecode and loads it directly  without ever verifying that the bytecode actually corresponds to the source.
+When Python imports a module, it checks `__pycache__` for a compiled `.pyc` file. The freshness check is timestamp-based: if the `.pyc` modification time is greater than or equal to the source `.py` file's mtime, Python trusts the bytecode and loads it directly without ever verifying that the bytecode actually corresponds to the source.
 
 The `.pyc` header structure is:
 
@@ -570,4 +570,4 @@ Both approaches work, the Python one is cleaner because it handles the header ma
 | SUID bash via `chmod 6777`                                    | Persistent root access after privesc              |
 | Chrome debug log analysis                                     | VHost discovery (browsedinternals.htb)            |
 
-<figure><img src="../../../../.gitbook/assets/complete (39).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

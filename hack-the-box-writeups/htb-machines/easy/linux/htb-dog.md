@@ -188,4 +188,4 @@ The `bee` command can be used to run arbitrary PHP code with the `eval` command<
 -rwsr-xr-x 1 root root 1183448 May  3 12:43 /tmp/bash
 ```
 
-<figure><img src="../../../../.gitbook/assets/complete (3).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

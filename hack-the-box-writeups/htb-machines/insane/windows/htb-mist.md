@@ -999,7 +999,7 @@ Rooted.
 
 ***
 
-### Techniques&#x20;
+### Techniques
 
 | Technique                               | Tool / CVE                      | Notes                                                     |
 | --------------------------------------- | ------------------------------- | --------------------------------------------------------- |
@@ -1023,4 +1023,4 @@ Rooted.
 | Backup Operators → registry hive dump   | impacket reg.py backup          | HKLM\SAM, SYSTEM, SECURITY → secretsdump local            |
 | DCSync via machine account hash         | secretsdump.py DC01$            | Machine hash → DRSUAPI → full NTDS dump                   |
 
-<figure><img src="../../../../.gitbook/assets/complete (38).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

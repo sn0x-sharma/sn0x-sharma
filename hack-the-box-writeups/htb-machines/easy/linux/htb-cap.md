@@ -40,8 +40,6 @@ Inside the page, credentials were exposed in plain text:
 
 Using the credentials above, we were able to SSH into the box:
 
-
-
 ```bash
 ssh nathan@10.10.10.245
 # Password: Buck3tH4TF0RM3!
@@ -104,8 +102,6 @@ This command recursively lists all files with capabilities set, ignoring permiss
 
 ```
 
-
-
 This indicates that `python3.8` has the `cap_setuid` capability, which can be abused for privilege escalation.
 
 <figure><img src="../../../../.gitbook/assets/image (308).png" alt=""><figcaption></figcaption></figure>
@@ -150,4 +146,4 @@ fd7286819ab053d7d05903f857ef5405
 | Root Shell           | Gained via GTFOBins             |
 | Flags Captured       | User + Root                     |
 
-<figure><img src="../../../../.gitbook/assets/complete (8).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

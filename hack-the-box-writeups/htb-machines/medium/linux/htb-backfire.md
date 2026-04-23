@@ -656,4 +656,4 @@ uid=0(root) gid=0(root) groups=0(root)
 
 Thanks For reading !
 
-![](<../../../../.gitbook/assets/complete (12).gif>)<br>
+![](../../../../.gitbook/assets/complete.gif)<br>

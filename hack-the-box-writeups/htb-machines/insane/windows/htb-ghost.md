@@ -36,8 +36,6 @@ icon: ghost
 15. **MSSQL Guest Session** – Florence’s account also had unintended access to an MSSQL instance as a guest.
 16. **Linked MSSQL Privilege Abuse** – Even from this guest session, `execute_as_login` on the linked database could be abused to pivot to MSSQL on PRIMARY (same as step 12 above).
 
-
-
 ### Reconnaissance <a href="#reconnaissance" id="reconnaissance"></a>
 
 ```python
@@ -204,7 +202,7 @@ I add the identified domains to my `/etc/hosts` as well.
 
 Checking out `http://ghost.htb:8008`, I find some sort of blog powered by [Ghost](https://ghost.org/), but besides a possible username (`Kathryn Holland`) there is not much to discover
 
-<figure><img src="../../../../.gitbook/assets/image (353).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (351).png" alt=""><figcaption></figcaption></figure>
 
 Trying another virtual host, `http://intranet.ghost.htb:8008`, returns a login screen to the **Intranet**, but instead of asking for a password one has to supply a **Secret**.
 
@@ -1116,4 +1114,4 @@ SQL >"PRIMARY" (sa  dbo@master)> xp_cmdshell "powershell -c ..."
 
 Basically the steps are the same and in the end I receive a shell as `NT Service\MSSQLSERVER` and proceed with the escalation to NT Authority and take over the domain(s).
 
-<figure><img src="../../../../.gitbook/assets/complete (26).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

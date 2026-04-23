@@ -28,7 +28,7 @@ PORT     STATE SERVICE    VERSION
 Service Info: OS: Windows
 ```
 
-**Why this matters:** IIS 10.0 indicates Windows 10 or Server 2016/2019. Anonymous FTP is an immediate priority  it often contains sensitive files left by developers. Port 8080 returning "Bad Request" without the correct hostname suggests virtual host routing.
+**Why this matters:** IIS 10.0 indicates Windows 10 or Server 2016/2019. Anonymous FTP is an immediate priority it often contains sensitive files left by developers. Port 8080 returning "Bad Request" without the correct hostname suggests virtual host routing.
 
 #### Port Scan (UDP)
 
@@ -586,4 +586,4 @@ Anonymous FTP → DISK images → FDISK labelled "PASSWORDS"
 
 ***
 
-<figure><img src="../../../../.gitbook/assets/complete (37).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

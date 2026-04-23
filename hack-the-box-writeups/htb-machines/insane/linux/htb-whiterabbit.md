@@ -422,7 +422,7 @@ Table: command_log
 +----+---------------------+------------------------------------------------------------------------------+
 ```
 
-**What did we find?**  This is gold! The command log shows:
+**What did we find?** This is gold! The command log shows:
 
 1. **Restic repository URL:** `http://75951e6ff.whiterabbit.htb`
 2. **Restic password:** `ygcsvCuMdfZ89yaRLlTKhe5jAmth7vxw`
@@ -821,7 +821,7 @@ morpheus@whiterabbit:~$ cat user.txt
 bb25c7ef55e17820a626c5b4a5530e68
 ```
 
-**User flag captured!**&#x20;
+**User flag captured!**
 
 ***
 
@@ -1032,7 +1032,7 @@ Hydra v9.5 (c) 2023 by van Hauser/THC & David Maciejak
 1 of 1 target successfully completed, 1 valid password found
 ```
 
-**Success!**  Neo's password is: `WBSxhWgfnMiclrV4dqfj`
+**Success!** Neo's password is: `WBSxhWgfnMiclrV4dqfj`
 
 ***
 
@@ -1091,7 +1091,7 @@ neo@whiterabbit:~$ sudo su
 root@whiterabbit:/home/neo#
 ```
 
-**We are ROOT!**&#x20;
+**We are ROOT!**
 
 ***
 
@@ -1260,4 +1260,4 @@ b7c7eb99f8df35c94b9d6b0f43ad34d4
 WhiteRabbit - PWNED 
 ```
 
-<figure><img src="../../../../.gitbook/assets/complete (36).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

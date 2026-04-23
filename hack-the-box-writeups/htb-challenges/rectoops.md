@@ -133,8 +133,8 @@ Content-Type: text/html; charset=utf-8
 **Key Indicators Found:**
 
 * `X-Powered-By: Next.js` - Confirms Next.js framework
-* &#x20;`Vary: rsc` - React Server Components enabled
-* &#x20;`x-nextjs-cache` - Server-side rendering active
+* `Vary: rsc` - React Server Components enabled
+* `x-nextjs-cache` - Server-side rendering active
 
 #### Step 2: Technology Fingerprinting
 
@@ -272,7 +272,7 @@ fi
 
 **Output:**
 
-<figure><img src="../../.gitbook/assets/image (547).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (546).png" alt=""><figcaption></figcaption></figure>
 
 #### Understanding the Detection Mechanism
 
@@ -525,7 +525,7 @@ This script uses the redirect-based exploitation technique:
 
 <figure><img src="../../.gitbook/assets/image (550).png" alt=""><figcaption></figcaption></figure>
 
-**Key Discovery:**  **flag.txt found at /app/flag.txt**
+**Key Discovery:** **flag.txt found at /app/flag.txt**
 
 ***
 
@@ -544,7 +544,7 @@ This script uses the redirect-based exploitation technique:
 HTB{jusXXX4s3_y0u_m1XXXXXXXXX___CVE-2025-55182}
 ```
 
-### FLAG CAPTURED!&#x20;
+### FLAG CAPTURED!
 
 ***
 
@@ -1035,7 +1035,7 @@ done
 
 The vulnerability exists in the **deserialization layer**, which processes data **before** any authentication checks:
 
-<figure><img src="../../.gitbook/assets/image (554).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (553).png" alt=""><figcaption></figcaption></figure>
 
 ***
 
@@ -1148,4 +1148,4 @@ This vulnerability serves as a stark reminder of the importance of:
 
 ***
 
-<figure><img src="../../.gitbook/assets/complete (36).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

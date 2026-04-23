@@ -20,8 +20,6 @@ icon: ship
 **Privilege Escalation**\
 7\. Exploit **CVE-2024-41817** in **ImageMagick** → Gain shell as **root**.
 
-
-
 ### Reconnaissance <a href="#reconnaissance" id="reconnaissance"></a>
 
 ```
@@ -268,4 +266,4 @@ whoami
 
 ***
 
-<figure><img src="../../../../.gitbook/assets/complete (4).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

@@ -1063,6 +1063,6 @@ Shell as simple (WinRM via Proxychains)
                                                                          = Root flag (ADS)
 ```
 
-<figure><img src="../../../../.gitbook/assets/complete (37).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>
 
 ***

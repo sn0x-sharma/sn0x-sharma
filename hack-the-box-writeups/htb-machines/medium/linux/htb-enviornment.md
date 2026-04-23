@@ -366,6 +366,6 @@ $ ls -la /tmp/bash
 -rwsr-xr-x 1 root root 1265648 May  4 18:55 /tmp/bash
 ```
 
-<figure><img src="../../../../.gitbook/assets/complete (35).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>
 
 ### ROOT

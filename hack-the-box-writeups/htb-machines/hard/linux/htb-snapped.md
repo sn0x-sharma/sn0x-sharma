@@ -154,7 +154,7 @@ licenses    [Status: 200, Size: 52782, Words: 9, Lines: 1, Duration: 88ms]
 
 <figure><img src="../../../../.gitbook/assets/image (29).png" alt=""><figcaption></figcaption></figure>
 
-A zip file served without auth, AND the decryption key sitting right there in the response header. This is CVE-2026-27944  Nginx-UI versions up to 2.3.2 expose `/api/backup` without any authentication and helpfully include the AES key and IV in `X-Backup-Security`. The key is `base64(AES-key):base64(IV)`.
+A zip file served without auth, AND the decryption key sitting right there in the response header. This is CVE-2026-27944 Nginx-UI versions up to 2.3.2 expose `/api/backup` without any authentication and helpfully include the AES key and IV in `X-Backup-Security`. The key is `base64(AES-key):base64(IV)`.
 
 Let's grab the backup and decrypt it manually to understand what we're working with.
 
@@ -267,7 +267,7 @@ jonathan@snapped:~$
 
 ***
 
-## Privilege Escalation&#x20;
+## Privilege Escalation
 
 ### CVE-2026-3888 (snap-confine TOCTOU Race)
 
@@ -281,7 +281,7 @@ Before attempting the race, check the cleanup timer — the race depends on `.sn
 
 <figure><img src="../../../../.gitbook/assets/image (32).png" alt=""><figcaption></figcaption></figure>
 
-The timer override runs cleanup every minute, and anything in `/tmp` older than 4 minutes gets wiped. That's deliberately short  perfect conditions for the race.
+The timer override runs cleanup every minute, and anything in `/tmp` older than 4 minutes gets wiped. That's deliberately short perfect conditions for the race.
 
 ***
 
@@ -305,7 +305,7 @@ The `while` loop keeps `/tmp` active (preventing its deletion) while letting `.s
 
 After about a minute the loop exits. `.snap` is gone.
 
-**Terminal 2**  We compiled and uploaded `firefox_2404` (the race helper binary from the writeup) and `librootshell.so` (our shellcode that replaces `ld-linux`) beforehand via scp. Now from Terminal 2, access the sandbox's `/tmp` through `/proc/PID/cwd` — this bypasses the `700 root:root` permissions on `/tmp/snap-private-tmp/` because we're following the process's mount namespace view, not traversing the host path.
+**Terminal 2** We compiled and uploaded `firefox_2404` (the race helper binary from the writeup) and `librootshell.so` (our shellcode that replaces `ld-linux`) beforehand via scp. Now from Terminal 2, access the sandbox's `/tmp` through `/proc/PID/cwd` — this bypasses the `700 root:root` permissions on `/tmp/snap-private-tmp/` because we're following the process's mount namespace view, not traversing the host path.
 
 ```
 ┌──(sn0x㉿sn0x)-[~/HTB/snapped]
@@ -361,7 +361,7 @@ jonathan@snapped:/proc/13354/root$ cp /usr/bin/busybox ./tmp/sh
 jonathan@snapped:/proc/13354/root$ cat ~/librootshell.so > ./usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
 ```
 
-`busybox` as `/tmp/sh` because it's a static binary  no dependency on the dynamic loader we just overwrote. `librootshell.so` is our shellcode that does `setreuid(0,0)` + `setregid(0,0)` + `execve("/tmp/sh")` via raw syscalls  no libc, no loader dependency.
+`busybox` as `/tmp/sh` because it's a static binary no dependency on the dynamic loader we just overwrote. `librootshell.so` is our shellcode that does `setreuid(0,0)` + `setregid(0,0)` + `execve("/tmp/sh")` via raw syscalls no libc, no loader dependency.
 
 ***
 
@@ -443,7 +443,7 @@ SSH as jonathan
 
 ***
 
-### Techniques&#x20;
+### Techniques
 
 | Technique                             | Where Used                                                |
 | ------------------------------------- | --------------------------------------------------------- |
@@ -463,4 +463,4 @@ SSH as jonathan
 | Linux mount namespace manipulation    | Poisoning the Firefox snap's shared library path          |
 | SUID bash persistence                 | Escaping AppArmor sandbox via `/var/snap/firefox/common/` |
 
-<figure><img src="../../../../.gitbook/assets/complete (38).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

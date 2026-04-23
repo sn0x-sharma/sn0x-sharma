@@ -375,4 +375,4 @@ cat /root/root.txt
 * SUID Binaries: Regularly audit SUID binaries and `doas`/`sudo` configurations.
 * Plugin Directories: Ensure plugin directories are not writable by low-privileged users.
 
-<figure><img src="../../../../.gitbook/assets/complete (5).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

@@ -42,13 +42,11 @@ While I don't recall the exact final score, I achieved **3200+ points**, **which
 
 ***
 
-
-
 ## OSINT CHALLENGES
 
 <figure><img src="../.gitbook/assets/image (415).png" alt=""><figcaption></figcaption></figure>
 
-### 1. Flight of the Lurk3r&#x20;
+### 1. Flight of the Lurk3r
 
 <figure><img src="../.gitbook/assets/image (377).png" alt=""><figcaption></figcaption></figure>
 
@@ -86,12 +84,10 @@ While I don't recall the exact final score, I achieved **3200+ points**, **which
 
 <figure><img src="../.gitbook/assets/image (378).png" alt=""><figcaption></figcaption></figure>
 
-Why: The image suggested a reverse image search to find its origin, a common OSINT technique for identifying locations or sources.\
+Why: The image suggested a reverse image search to find its origin, a common OSINT technique for identifying locations or sources.\
 What We Found: The image was a clear aerial view, likely taken during a flight, and the KLM branding hinted at a European context.
 
 <figure><img src="../.gitbook/assets/image (379).png" alt=""><figcaption></figcaption></figure>
-
-
 
 **What I Did**:
 
@@ -261,7 +257,7 @@ try not to miss what's flying right in front of you.☁
 
 ***
 
-### 8. Bonus Challenge :  The Final
+### 8. Bonus Challenge : The Final
 
 **Description**: The challenge required revisiting the Instagram account `amster_m_illiano` on a mobile device to uncover a hidden flag through a chatbot interaction.
 
@@ -316,8 +312,6 @@ try not to miss what's flying right in front of you.☁
 **Flag**: `PAYATU{f7p_4cc355_gr4n73d_n0w_f1nd_7h3_n3x7_573p}`
 
 ***
-
-
 
 ### 2. Legacy Leaks — The Smuggler's Share
 
@@ -808,7 +802,7 @@ if (strcmp(userInput, "undefined") == 0) {
 
 <figure><img src="../.gitbook/assets/image (397).png" alt=""><figcaption></figcaption></figure>
 
-&#x20;**Flag:** `PAYATU{N0W_U_C_M3}`
+**Flag:** `PAYATU{N0W_U_C_M3}`
 
 ***
 
@@ -1185,7 +1179,7 @@ This confirms that bypassing root detection allowed us to access the protected f
 
 > "Find the root cause of the problem" – Android app with a native check on passcode validation, which controls access to a hidden flag through native methods.
 >
-> ![](<../.gitbook/assets/image (402).png>)
+> <img src="../.gitbook/assets/image (402).png" alt="" data-size="original">
 
 ***
 
@@ -1503,6 +1497,6 @@ Flag: PAYATU{}
 
 **Flag**: PAYATU{}
 
-<figure><img src="../.gitbook/assets/complete (34).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>
 
 ***

@@ -4,7 +4,7 @@ icon: inbox-out
 
 # HTB-OUTBOUND
 
-<figure><img src="../../../../.gitbook/assets/image (509).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (508).png" alt=""><figcaption></figcaption></figure>
 
 ### Attack Flow Explanation
 
@@ -90,8 +90,6 @@ Now we discovered a login panel for **Roundcube Webmail (v1.6.10)**.
 <figure><img src="../../../../.gitbook/assets/image (510).png" alt=""><figcaption></figcaption></figure>
 
 **Credentials Provided in Challenge:**
-
-
 
 ```
 tyler / LhKL1o9Nm3X2
@@ -224,7 +222,7 @@ cat /home/jacob/mail/INBOX/jacob
 
 Using this new password, we confirmed access via SSH to Jacob’s account on the main host.
 
-<figure><img src="../../../../.gitbook/assets/image (513).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (512).png" alt=""><figcaption></figcaption></figure>
 
 ```bash
 

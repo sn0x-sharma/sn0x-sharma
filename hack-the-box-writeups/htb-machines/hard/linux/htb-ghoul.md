@@ -646,7 +646,7 @@ Flag Recovery
 
 ***
 
-### Techniques&#x20;
+### Techniques
 
 | Technique                      | Classification         | Where Used                                | Why It Works                                                                                   |
 | ------------------------------ | ---------------------- | ----------------------------------------- | ---------------------------------------------------------------------------------------------- |
@@ -671,4 +671,4 @@ Flag Recovery
 
 ***
 
-<figure><img src="../../../../.gitbook/assets/complete (37).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

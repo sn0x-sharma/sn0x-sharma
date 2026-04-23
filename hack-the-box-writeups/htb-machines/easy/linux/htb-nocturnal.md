@@ -44,7 +44,7 @@ icon: jug-detergent
    * Research revealed it was vulnerable to **CVE-2023-46818**, with a working public PoC.
    * Running the exploit with the admin credentials provided a **pseudo-shell as root**, achieving full system compromise.
 
-&#x20;Final Outcome: The attack chain demonstrated a complete compromise starting from **user enumeration in the upload service** → **file disclosure & database extraction** → **SSH shell as Tobias** → **ISPConfig exploit** → **root access**.
+Final Outcome: The attack chain demonstrated a complete compromise starting from **user enumeration in the upload service** → **file disclosure & database extraction** → **SSH shell as Tobias** → **ISPConfig exploit** → **root access**.
 
 ***
 
@@ -648,7 +648,7 @@ ispconfig-shell# whoami
 root
 ```
 
-### Second Method to Root&#x20;
+### Second Method to Root
 
 #### 1) Confirm Current Access
 
@@ -786,4 +786,4 @@ Typical flow:
 3. Enumerate configs, DB creds, backup/cron jobs.
 4. Use credentials or privileged scripts to escalate to root.
 
-<figure><img src="../../../../.gitbook/assets/complete (1).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

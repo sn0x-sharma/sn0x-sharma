@@ -9,7 +9,7 @@ coverY: 34.242614707730986
 
 ***
 
-### Attack Flow&#x20;
+### Attack Flow
 
 <figure><img src="../../../../.gitbook/assets/image (537).png" alt=""><figcaption></figcaption></figure>
 
@@ -164,7 +164,7 @@ firefox http://editor.htb:8080/xwiki/
 
 Upon accessing `wiki.editor.htb` or `http://editor.htb:8080/xwiki/`, we encounter the XWiki interface.
 
-<figure><img src="../../../../.gitbook/assets/image (541).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (540).png" alt=""><figcaption></figcaption></figure>
 
 **Initial observations:**
 
@@ -1031,6 +1031,6 @@ cat root.txt
 
 **Root flag captured!**
 
-<figure><img src="../../../../.gitbook/assets/complete (36).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>
 
 <figure><img src="../../../../.gitbook/assets/image (543).png" alt=""><figcaption></figcaption></figure>

@@ -610,7 +610,7 @@ Last login: Mon Jun 21 18:42:15 2024 from 10.10.14.8
 gael@artificial:~$ 
 ```
 
-&#x20;**Successfully logged in as gael!**
+**Successfully logged in as gael!**
 
 #### Capturing User Flag
 
@@ -643,7 +643,7 @@ cat user.txt
 a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6
 ```
 
-&#x20;**User flag captured!**
+**User flag captured!**
 
 #### Privilege Enumeration
 
@@ -1037,4 +1037,4 @@ id
 uid=0(root) --- 
 ```
 
-<figure><img src="../../../../.gitbook/assets/complete (36).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

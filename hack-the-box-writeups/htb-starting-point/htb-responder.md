@@ -9,7 +9,7 @@ nmap -p- -T5 --min-rate 1000 -sV 10.129.139.135
 
 ```
 
-<figure><img src="../../.gitbook/assets/image (290).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (289).png" alt=""><figcaption></figcaption></figure>
 
 Identified open ports and services. Web server detected.
 
@@ -28,7 +28,7 @@ Website now loads correctly via browser using `http://unika.htb`
 
 Navigating to http://\[IP] auto-redirected to unika.htb, indicating name-based virtual hosting. Added IP unika.htb in /etc/hosts to resolve the domain locally and trigger the correct Host header response from the server.
 
-<figure><img src="../../.gitbook/assets/image (292).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (291).png" alt=""><figcaption></figcaption></figure>
 
 #### 3. LFI Discovery
 

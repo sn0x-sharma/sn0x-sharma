@@ -116,7 +116,7 @@ Alternatively using Enyx (disable mibs first — recomment the line in `snmp.con
 
 ***
 
-### Web  TCP 3366 (Python SimpleHTTPAuthServer)
+### Web TCP 3366 (Python SimpleHTTPAuthServer)
 
 Visiting `http://10.10.10.92:3366` prompts for Basic Auth. Using the creds from SNMP:
 
@@ -133,7 +133,7 @@ loki:trickeryanddeceit
 
 ***
 
-### Port Scan  IPv6
+### Port Scan IPv6
 
 ```
 ┌──(sn0x㉿sn0x)-[~/HTB/Mischief]
@@ -391,7 +391,7 @@ root@Mischief:~#
 
 ***
 
-### Bonus  ICMP Data Exfiltration
+### Bonus ICMP Data Exfiltration
 
 Before discovering the semicolon output trick, a full ICMP exfil approach works when all TCP/UDP outbound is blocked. The `ping` `-p` flag accepts up to 16 hex bytes as a pattern to embed in the ICMP payload.
 
@@ -464,7 +464,7 @@ while True:
 
 ***
 
-### Attack  Flow
+### Attack Flow
 
 ```
 SNMP process args → credentials for port 3366 (loki:godofmischiefisloki)
@@ -493,6 +493,6 @@ SNMP ipAddressType → IPv6 address (dead:beef::...)
 
 ```
 
-<figure><img src="../../../../.gitbook/assets/complete (37).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>
 
 ***

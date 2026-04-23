@@ -10,8 +10,6 @@ Machine info
 
 BigBang is a challenging Linux-based machine on Hack The Box, designed to test advanced exploitation skills. It involves exploiting a PHP vulnerability (CVE-2024-2961) through a complex chain of heap manipulation and encoding techniques to achieve remote code execution. The machine also features an OS command injection vulnerability that can be leveraged to escalate privileges and gain root access.
 
-
-
 ### Reconnaissance <a href="#reconnaissance" id="reconnaissance"></a>
 
 <figure><img src="../../../../.gitbook/assets/image (310).png" alt=""><figcaption></figcaption></figure>
@@ -44,7 +42,7 @@ Running: Linux 4.X|5.X
 
 <figure><img src="../../../../.gitbook/assets/image (312).png" alt=""><figcaption></figcaption></figure>
 
-Found&#x20;
+Found
 
 ```
 wp-content             
@@ -637,5 +635,4 @@ if __name__ == "__main__":
 
 <figure><img src="../../../../.gitbook/assets/image (316).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../../../../.gitbook/assets/complete (23).gif" alt=""><figcaption></figcaption></figure>
-
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

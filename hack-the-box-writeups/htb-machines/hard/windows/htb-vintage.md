@@ -4,7 +4,7 @@ icon: spider-web
 
 # HTB-VINTAGE
 
-<figure><img src="../../../../.gitbook/assets/image (284).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (283).png" alt=""><figcaption></figcaption></figure>
 
 ### Overview
 
@@ -365,7 +365,7 @@ type C:\Users\administrator\desktop\root.txt
 # Result: c5cdaf4c************************
 ```
 
-<figure><img src="../../../../.gitbook/assets/complete (22).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>
 
 ### Attack Chain Summary
 
@@ -382,7 +382,7 @@ type C:\Users\administrator\desktop\root.txt
 
 <br>
 
-<figure><img src="../../../../.gitbook/assets/image (286).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (285).png" alt=""><figcaption></figcaption></figure>
 
 ***
 

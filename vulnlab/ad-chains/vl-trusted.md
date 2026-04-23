@@ -127,7 +127,7 @@ db.php
 
 ***
 
-### Local File Inclusion -  Reading db.php
+### Local File Inclusion - Reading db.php
 
 Looking at the navigation links in the law firm site, each one loads via a `?view=` parameter — `index.html?view=about.html`, `index.html?view=contact.html`, and so on. That pattern is an immediate red flag. If the server is just including whatever value is passed to `view=`, without sanitization or path restriction, we have LFI.
 
@@ -755,4 +755,4 @@ RDP session opens with full desktop context. The EFS key is now available. `root
 
 ***
 
-<figure><img src="../../.gitbook/assets/complete (38).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

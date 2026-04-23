@@ -7,7 +7,7 @@ icon: lock
 
 Author : sn0xsharma
 
-<figure><img src="../../../.gitbook/assets/image (282).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (281).png" alt=""><figcaption></figcaption></figure>
 
 ### Introduction
 
@@ -382,4 +382,4 @@ Leverage Splunk for proactive threat hunting:
 
 LockPick4.0 exemplifies the sophistication of modern ransomware, combining social engineering, UAC bypass, DLL side-loading, and anti-debugging to devastating effect. Through meticulous reverse engineering, we uncovered its infection chain, extracted critical IOCs, and proposed comprehensive mitigation strategies. Organizations must adopt layered defenses—email filtering, script restrictions, endpoint protection, and robust backups—while leveraging advanced detection tools like Sysmon and Splunk. This analysis highlights the importance of proactive threat hunting and user education in combating evolving cyberthreats.
 
-<figure><img src="../../../.gitbook/assets/complete (32).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

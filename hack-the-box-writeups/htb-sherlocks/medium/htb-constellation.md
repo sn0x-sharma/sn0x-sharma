@@ -2,8 +2,6 @@
 
 <figure><img src="../../../.gitbook/assets/image (185).png" alt=""><figcaption></figcaption></figure>
 
-
-
 > \
 > Scenario
 >
@@ -14,8 +12,6 @@
 <details>
 
 <summary>Questions</summary>
-
-
 
 1. When did the suspect first start Direct Message (DM) conversations with the external entity (A possible threat actor group which targets organizations by paying employees to leak sensitive data)? (UTC)
 2. What was the name of the file sent to the suspected insider threat?
@@ -107,8 +103,6 @@ Looking deeper into the PDF, I focus on its **metadata**, which not only confirm
 * A potential username, **CyberJunkie**, is also revealed; however, this appears to be the creator of the Sherlock report rather than an actual threat actor.
 * Finally, the **Title** field confirms that the file was addressed to an employee named **Karen**.
 
-
-
 ## OSINT
 
 <figure><img src="../../../.gitbook/assets/image (186).png" alt=""><figcaption></figcaption></figure>
@@ -157,15 +151,11 @@ The amount of unfurled URL parameters goes way beyond what is shown in the pictu
 
 The `sxsrf` parameter and also the `ei` parameter, which is offscreen, tell me about when the Google search was made.
 
-
-
 ## Answers <a href="#answers" id="answers"></a>
 
 <details>
 
 <summary>Answers</summary>
-
-
 
 1. When did the suspect first start Direct Message (DM) conversations with the external entity (A possible threat actor group which targets organizations by paying employees to leak sensitive data)? (UTC)
 
@@ -213,4 +203,4 @@ The `sxsrf` parameter and also the `ei` parameter, which is offscreen, tell me a
 
 </details>
 
-<figure><img src="../../../.gitbook/assets/complete (31).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

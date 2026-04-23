@@ -602,7 +602,7 @@ Using `bloodhound-python-ce`, I collected the necessary data to be ingested into
                                        -ns 10.129.128.240
 ```
 
-<figure><img src="../../../../.gitbook/assets/image (449).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (448).png" alt=""><figcaption></figcaption></figure>
 
 Analyzing the BloodHound data revealed an attack path from the `m.schoolbus` account to the domain object. Specifically, this account has the rights to link a Group Policy Object (GPO) to the _Domain Controllers_ organizational unit.
 
@@ -764,7 +764,7 @@ PS C:\> type C:\Users\m.schoolbus\test
 nt authority\system
 ```
 
-Command execution confirmed&#x20;
+Command execution confirmed
 
 ***
 
@@ -819,7 +819,5 @@ PS C:\users\administrator\desktop> type root.txt
 
 This is the **second method** of achieving full domain compromise:\
 instead of relying only on privilege escalation on a single host, we **abuse GPO permissions** via the `Group Policy Creator Owners` group. Using **SharpGPOAbuse**, we created new GPOs, linked them to the domain, and used them to push commands and reverse shells — ultimately leading to **complete domain compromise**.
-
-
 
 <br>

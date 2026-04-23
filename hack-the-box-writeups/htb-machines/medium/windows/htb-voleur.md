@@ -21,7 +21,7 @@ The reconnaissance phase revealed that the target is a **Domain Controller** for
 └─$ Rustscan - blah blah commands
 ```
 
-Output &#x20;
+Output
 
 ```
 PORT      STATE SERVICE       VERSION
@@ -1078,6 +1078,4 @@ The Voleur machine demonstrated a realistic Active Directory penetration testing
 
 Each stage built upon the previous, requiring careful enumeration and understanding of Windows and Active Directory security mechanisms. The final compromise through ntds.dit extraction represents one of the most severe outcomes in an Active Directory environment - complete access to all user credentials.
 
-
-
-<figure><img src="../../../../.gitbook/assets/complete (27).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

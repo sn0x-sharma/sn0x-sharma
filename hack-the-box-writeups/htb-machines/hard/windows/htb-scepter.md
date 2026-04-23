@@ -117,8 +117,6 @@ Service Info: Host: DC01; OS: Windows; CPE: cpe:/o:microsoft:windows
 
 Glancing over the open ports, this is the **Domain Controller** `DC01` for the `scepter.htb` domain. Therefore I add the domain, hostname and FQDN to my `/etc/hosts` file. I rather unusual port `2049` was detected and this is associated with the **Network File System**.
 
-
-
 ### Initial Access <a href="#initial-access" id="initial-access"></a>
 
 Since the **NFS** stood out on the **nmap** scan I start with listing the exported shares with **showmount**.
@@ -268,7 +266,7 @@ Passing the hash via **bloodyAD** let’s me set the password for `a.carter` to 
 
 Checking back in **BloodHound** there’s also an edge cycling back to `d.baker`. For now there’s no point in exploiting this because I already compromised the account.
 
-<figure><img src="../../../../.gitbook/assets/image (325).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (324).png" alt=""><figcaption></figcaption></figure>
 
 The authentication via certificates obviously requires the **Active Directory Certificate Services** (ADCS) to be present and to check for common misconfigurations I run `certipy find`. With the `-vulnerable` switch the tool limits the output to certificate templates where such a configuration issue is found.
 
@@ -619,4 +617,4 @@ DC01$:des-cbc-md5:d6923e61a83d51ef
 [*] Cleaning up...
 ```
 
-<figure><img src="../../../../.gitbook/assets/complete (20).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

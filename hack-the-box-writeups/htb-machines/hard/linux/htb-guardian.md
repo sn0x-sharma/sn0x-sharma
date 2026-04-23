@@ -865,4 +865,4 @@ Privesc Chain
 | Evil shared object `.so` constructor               | LoadModule arg check targets wrong token → SUID bash     |
 | Apache DocumentRoot file read                      | Alternative: point web server at /root, curl root.txt    |
 
-<figure><img src="../../../../.gitbook/assets/complete (37).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

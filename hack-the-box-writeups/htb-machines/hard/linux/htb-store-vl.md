@@ -1,6 +1,6 @@
 ---
 icon: garage-open
-cover: ../../../../.gitbook/assets/Screenshot 2026-02-04 142237.png
+cover: ../../../../.gitbook/assets/image (124).png
 coverY: -25.003142677561282
 ---
 

@@ -34,7 +34,7 @@ PORT     STATE SERVICE  VERSION
 5985/tcp open  http     Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
 ```
 
-Three ports  HTTP, MSSQL, and WinRM. The NTLM info leaks the hostname as `DC01` which tells us straight away we're talking directly to a Domain Controller. Added `10.129.87.193 eighteen.htb dc01.eighteen.htb` to `/etc/hosts` and moved on.
+Three ports HTTP, MSSQL, and WinRM. The NTLM info leaks the hostname as `DC01` which tells us straight away we're talking directly to a Domain Controller. Added `10.129.87.193 eighteen.htb dc01.eighteen.htb` to `/etc/hosts` and moved on.
 
 One thing to note immediately: nmap (well, rustscan here) is reporting a 7-hour clock skew. That's going to matter later when we do anything Kerberos related, so keep that in the back of your head.
 
@@ -224,7 +224,7 @@ Either way you get the same formatted string for hashcat.
 
 ### Getting Admin on the Web App
 
-Log in at `http://eighteen.htb/login` as `admin:iloveyou1`. Admin panel at `/admin` is now accessible and shows the app config  Flask Financial Planner v1.0, database is MSSQL on `dc01.eighteen.htb`.
+Log in at `http://eighteen.htb/login` as `admin:iloveyou1`. Admin panel at `/admin` is now accessible and shows the app config Flask Financial Planner v1.0, database is MSSQL on `dc01.eighteen.htb`.
 
 <figure><img src="../../../../.gitbook/assets/image (661).png" alt=""><figcaption></figcaption></figure>
 
@@ -702,4 +702,4 @@ The hash didn't crack against rockyou here (service accounts usually have decent
 
 <figure><img src="../../../../.gitbook/assets/image (664).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../../../../.gitbook/assets/complete (39).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

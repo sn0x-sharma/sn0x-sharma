@@ -4,7 +4,7 @@ icon: circle-three-quarters
 
 # HTB-REDELEGATE (VL)
 
-<figure><img src="../../../../.gitbook/assets/image (493).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (492).png" alt=""><figcaption></figcaption></figure>
 
 ### Reconnaissance & Enumeration
 
@@ -817,4 +817,4 @@ redelegate.vl\sql_svc:1111:aad3b435b51404eeaad3b435b51404ee:1e3d2c1b0a9f8e7d6c5b
 DC$:1000:aad3b435b51404eeaad3
 ```
 
-<figure><img src="../../../../.gitbook/assets/complete (36).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

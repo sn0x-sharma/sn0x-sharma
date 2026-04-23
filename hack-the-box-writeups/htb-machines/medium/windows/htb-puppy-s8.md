@@ -4,8 +4,6 @@ icon: dog
 
 # HTB-PUPPY (S8)
 
-
-
 <figure><img src="../../../../.gitbook/assets/image (167).png" alt=""><figcaption></figcaption></figure>
 
 ## Attack Flow Explanation
@@ -1191,4 +1189,4 @@ Great! I've discovered another set of credentials:
 
 After successfully decrypting the DPAPI credentials, I obtained the account details `steph.cooper_adm:FivethChipOnItsWay2025!` which corresponds to a user with administrative privileges. With these elevated credentials, I was able to access the system and retrieve the root flag.
 
-<figure><img src="../../../../.gitbook/assets/complete (35).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

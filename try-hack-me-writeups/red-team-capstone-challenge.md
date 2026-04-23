@@ -1,8 +1,7 @@
 ---
 icon: google-scholar
 cover: >-
-  ../.gitbook/assets/samurai-katana-warrior-immortal-sun-silhouette-black-3840x2160-7471
-  (1).png
+  ../.gitbook/assets/samurai-katana-warrior-immortal-sun-silhouette-black-3840x2160-7471.png
 coverY: 238.9440603394092
 ---
 
@@ -14,7 +13,7 @@ coverY: 238.9440603394092
 
 <summary>TARGET INFORMATION</summary>
 
-## Project Overview <a href="#id-129143da-56d9-4d8a-ac94-e20b628d05b9" id="id-129143da-56d9-4d8a-ac94-e20b628d05b9"></a>
+### Project Overview <a href="#id-129143da-56d9-4d8a-ac94-e20b628d05b9" id="id-129143da-56d9-4d8a-ac94-e20b628d05b9"></a>
 
 TryHackMe, a cybersecurity consultancy firm, has been approached by the government of Trimento to perform a red team engagement against their Reserve Bank (TheReserve).
 
@@ -25,7 +24,7 @@ Trimento is an island country situated in the Pacific. While they may be small i
 
 The Trimento government has stated that the assessment will cover the entire reserve bank, including both its perimeter and internal networks. They are concerned that the corporate division while boosting the economy, may be endangering the core banking system due to insufficient segregation. The outcome of this red team engagement will determine whether the corporate division should be spun off into its own company.
 
-#### Project Goal <a href="#b5dd6c06-e965-43aa-9e4c-1abc0531ebff" id="b5dd6c06-e965-43aa-9e4c-1abc0531ebff"></a>
+**Project Goal**
 
 The purpose of this assessment is to evaluate whether the corporate division can be compromised and, if so, determine if it could compromise the bank division. A simulated fraudulent money transfer must be performed to fully demonstrate the compromise.
 
@@ -43,7 +42,7 @@ However, the SWIFT backend exposes an internal web application at [http://swift.
 
 Separation of duties is performed to ensure that no single employee can both capture and approve the same transfer.
 
-## Project Scope <a href="#b7e602a5-d2ee-44e7-9cbb-6c82ec8fcbf7" id="b7e602a5-d2ee-44e7-9cbb-6c82ec8fcbf7"></a>
+### Project Scope <a href="#b7e602a5-d2ee-44e7-9cbb-6c82ec8fcbf7" id="b7e602a5-d2ee-44e7-9cbb-6c82ec8fcbf7"></a>
 
 This section details the project scope.
 
@@ -65,7 +64,7 @@ Out-of-Scope
 * Attacking any hosts outside of the provided subnet range. Once you have completed the questions below, your subnet will be displayed in the network diagram. This 10.200.X.0/24 network is the only in-scope network for this challenge.
 * Conducting DoS attacks or any attack that renders the network inoperable for other users.
 
-### Project Registration <a href="#id-3ed0f9d6-0273-4a7a-9746-8b6514bbfb53" id="id-3ed0f9d6-0273-4a7a-9746-8b6514bbfb53"></a>
+#### Project Registration <a href="#id-3ed0f9d6-0273-4a7a-9746-8b6514bbfb53" id="id-3ed0f9d6-0273-4a7a-9746-8b6514bbfb53"></a>
 
 The Trimento government mandates that all red teamers from TryHackMe participating in the challenge must register to allow their single point of contact for the engagement to track activities. As the island's network is segregated, this will also provide the testers access to an email account for communication with the government and an approved phishing email address, should phishing be performed.
 

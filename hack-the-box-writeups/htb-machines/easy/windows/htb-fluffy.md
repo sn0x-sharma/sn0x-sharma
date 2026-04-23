@@ -10,7 +10,7 @@ coverY: 6.2858777534089825
 
 Before touching a single command, let me actually explain what's going on here because this box has a specific setup that changes how you approach everything.
 
-This is an "assume breach" scenario. You're not starting as an anonymous attacker trying to get initial access from nothing  you're starting as someone who is already inside the organization with a low-privilege domain account. The box hands you these credentials upfront:
+This is an "assume breach" scenario. You're not starting as an anonymous attacker trying to get initial access from nothing you're starting as someone who is already inside the organization with a low-privilege domain account. The box hands you these credentials upfront:
 
 ```
 j.fleischman : J0elTHEM4n1990!
@@ -18,7 +18,7 @@ j.fleischman : J0elTHEM4n1990!
 
 Think of it like a real-world internal pentest where the client says "pretend you're a disgruntled junior employee how bad can things get?" You have valid credentials but you're nobody. No shell, no admin rights, nothing special. The question is how far you can push it.
 
-The full path to root looks like this: We start with `j.fleischman` and abuse write access to an SMB share to plant a malicious zip file. A Windows Explorer vulnerability (CVE-2025-24071) causes another user called `p.agila` to automatically authenticate to us when they browse the share. We capture their NetNTLMv2 hash and crack it. With `p.agila`'s credentials, BloodHound shows us a chain through group memberships that gives us GenericWrite over service accounts. We use a Shadow Credential attack to recover NTLM hashes for `winrm_svc` and `ca_svc`. `winrm_svc` gets us a WinRM shell and the user flag. From there we abuse ESC16 in the ADCS environment where the CA has a critical security extension disabled  to impersonate Administrator and collect the root flag.
+The full path to root looks like this: We start with `j.fleischman` and abuse write access to an SMB share to plant a malicious zip file. A Windows Explorer vulnerability (CVE-2025-24071) causes another user called `p.agila` to automatically authenticate to us when they browse the share. We capture their NetNTLMv2 hash and crack it. With `p.agila`'s credentials, BloodHound shows us a chain through group memberships that gives us GenericWrite over service accounts. We use a Shadow Credential attack to recover NTLM hashes for `winrm_svc` and `ca_svc`. `winrm_svc` gets us a WinRM shell and the user flag. From there we abuse ESC16 in the ADCS environment where the CA has a critical security extension disabled to impersonate Administrator and collect the root flag.
 
 Three distinct jumps. Let's walk through each one.
 
@@ -65,7 +65,7 @@ PORT     STATE SERVICE       VERSION
 | Issuer: commonName=fluffy-DC01-CA/domainComponent=fluffy
 ```
 
-One look at this port layout and the box's identity is immediately obvious. DNS on 53, Kerberos on 88, LDAP on 389/636/3268/3269, SMB on 445, WinRM on 5985, ADWS on 9389  this is a Windows Domain Controller, no question. The SSL certificate is also leaking two critical pieces of information we'll use throughout the box: the hostname is `DC01.fluffy.htb`, and the certificate issuer is `fluffy-DC01-CA` which tells us Active Directory Certificate Services is running before we even enumerate it directly. WinRM on 5985 is what we're ultimately targeting for our shells.
+One look at this port layout and the box's identity is immediately obvious. DNS on 53, Kerberos on 88, LDAP on 389/636/3268/3269, SMB on 445, WinRM on 5985, ADWS on 9389 this is a Windows Domain Controller, no question. The SSL certificate is also leaking two critical pieces of information we'll use throughout the box: the hostname is `DC01.fluffy.htb`, and the certificate issuer is `fluffy-DC01-CA` which tells us Active Directory Certificate Services is running before we even enumerate it directly. WinRM on 5985 is what we're ultimately targeting for our shells.
 
 #### Hosts File
 
@@ -168,7 +168,7 @@ The `IT` share with both READ and WRITE permissions is immediately interesting. 
 
 <figure><img src="../../../../.gitbook/assets/image (652).png" alt=""><figcaption></figcaption></figure>
 
-Software installers  Everything (a Windows search utility) and KeePass — plus a PDF. The zip files are already extracted into folders next to them, which tells us someone or something is actively monitoring and processing this share. Let's grab the PDF.
+Software installers Everything (a Windows search utility) and KeePass — plus a PDF. The zip files are already extracted into folders next to them, which tells us someone or something is actively monitoring and processing this share. Let's grab the PDF.
 
 ```
 smb: \> lcd /home/sn0x/HTB/Fluffy
@@ -192,7 +192,7 @@ Alternatively with impacket:
 
 <figure><img src="../../../../.gitbook/assets/image (653).png" alt=""><figcaption></figcaption></figure>
 
-The PDF is an internal IT department notice about upcoming security patches. It lists CVEs that need to be addressed  and right there in the document is CVE-2025-24071. This is the box giving us a very direct hint about what vulnerability to exploit. But let's also check the PDF metadata.
+The PDF is an internal IT department notice about upcoming security patches. It lists CVEs that need to be addressed and right there in the document is CVE-2025-24071. This is the box giving us a very direct hint about what vulnerability to exploit. But let's also check the PDF metadata.
 
 ```
 ┌──(sn0x㉿sn0x)-[~/HTB/Fluffy]
@@ -206,7 +206,7 @@ Create Date                     : 2025:05:17 07:22:32+00:00
 Author                          : p.agila
 ```
 
-The author field leaks `p.agila`  this is the person who created the notice, which strongly implies they're the one monitoring this IT share. This is exactly who we're going to target with our exploit.&#x20;
+The author field leaks `p.agila` this is the person who created the notice, which strongly implies they're the one monitoring this IT share. This is exactly who we're going to target with our exploit.
 
 <figure><img src="../../../../.gitbook/assets/image (654).png" alt=""><figcaption></figcaption></figure>
 
@@ -255,7 +255,7 @@ Certificate Authorities
     Enroll                 : FLUFFY.HTB\Cert Publishers
 ```
 
-That `Disabled Extensions` line with OID `1.3.6.1.4.1.311.25.2` is a massive clue. That's the security extension responsible for strong certificate mapping in ADCS. Its absence from the CA configuration means ESC16 is in play  but we need a different account to exploit it. We'll come back here after we pivot through the domain.
+That `Disabled Extensions` line with OID `1.3.6.1.4.1.311.25.2` is a massive clue. That's the security extension responsible for strong certificate mapping in ADCS. Its absence from the CA configuration means ESC16 is in play but we need a different account to exploit it. We'll come back here after we pivot through the domain.
 
 ***
 
@@ -278,7 +278,7 @@ The BloodHound graph reveals this chain: `p.agila` is a member of `Service Accou
 
 #### What This Vulnerability Actually Is
 
-CVE-2025-24071 (also referred to as CVE-2025-24054 in some disclosures) is a vulnerability in how Windows Explorer handles `.library-ms` files when they're contained inside zip or rar archives. A `.library-ms` file is an XML-based Windows file that defines a "library"  it tells Explorer where to look for files in a collection. The vulnerability is that when Windows processes one of these files from an archive, it automatically attempts to reach out to any network paths defined inside it. If that network path points to an attacker's machine, Windows will try to authenticate over SMB using the current user's credentials, handing over a NetNTLMv2 hash.
+CVE-2025-24071 (also referred to as CVE-2025-24054 in some disclosures) is a vulnerability in how Windows Explorer handles `.library-ms` files when they're contained inside zip or rar archives. A `.library-ms` file is an XML-based Windows file that defines a "library" it tells Explorer where to look for files in a collection. The vulnerability is that when Windows processes one of these files from an archive, it automatically attempts to reach out to any network paths defined inside it. If that network path points to an attacker's machine, Windows will try to authenticate over SMB using the current user's credentials, handing over a NetNTLMv2 hash.
 
 Here's what makes this particularly nasty: the user doesn't need to double-click the file or extract it manually. Simply navigating to the folder containing the zip, right-clicking it, or dragging it are all enough to trigger the authentication attempt. It's essentially automatic NTLM credential theft that requires almost zero user interaction.
 
@@ -419,7 +419,7 @@ Upload to BloodHound, mark `p.agila` as owned. The attack path we described earl
 
 ## Shell as winrm\_svc - Shadow Credential Attack
 
-#### Step 1 -  Add p.agila to Service Accounts
+#### Step 1 - Add p.agila to Service Accounts
 
 `p.agila` is in `Service Account Managers` which has GenericAll over the `Service Accounts` group. GenericAll over a group means full control including the ability to add members. So we add `p.agila` to `Service Accounts` to inherit its GenericWrite permissions over the service accounts.
 
@@ -624,7 +624,7 @@ The certificate is already issued and saved. We don't need the modified UPN anym
 [*] Got hash for 'administrator@fluffy.htb': aad3b435b51404eeaad3b435b51404ee:8da83a3fa618b6e3a00e93f676c92a6e
 ```
 
-The DC accepted the certificate, issued a TGT for Administrator, and certipy extracted the NT hash via U2U Kerberos. The blank LM portion (`aad3b435b51404eeaad3b435b51404ee`) is just a standard placeholder  the actual NT hash is `8da83a3fa618b6e3a00e93f676c92a6e`.
+The DC accepted the certificate, issued a TGT for Administrator, and certipy extracted the NT hash via U2U Kerberos. The blank LM portion (`aad3b435b51404eeaad3b435b51404ee`) is just a standard placeholder the actual NT hash is `8da83a3fa618b6e3a00e93f676c92a6e`.
 
 If you prefer to use the TGT directly without the hash, that works too:
 
@@ -732,5 +732,4 @@ root.txt
 
 <figure><img src="../../../../.gitbook/assets/image (26).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../../../../.gitbook/assets/complete (38).gif" alt=""><figcaption></figcaption></figure>
-
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

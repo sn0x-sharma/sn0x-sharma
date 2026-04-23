@@ -119,7 +119,7 @@ Aha! Notice the `kid` is `enc-key-1` - that's the **encryption key**, not the si
 2. The token is JWE-encrypted
 3. The version is pac4j 6.0.3 which I'm pretty sure has CVE-2026-29000
 
-Let me Google...&#x20;
+Let me Google...
 
 <figure><img src="../../../../.gitbook/assets/image (44).png" alt=""><figcaption></figcaption></figure>
 
@@ -429,7 +429,7 @@ When OpenSSH has `TrustedUserCAKeys` configured but **no principal validation**,
 3. sshd matches the **principal field in the certificate** with the username being logged into
 4. If they match, authentication succeeds
 
-The vulnerability is: **We control the CA private key.** So we can sign a certificate with **any principal we want**  including `root`.
+The vulnerability is: **We control the CA private key.** So we can sign a certificate with **any principal we want** including `root`.
 
 This is the same pattern as the JWT bypass earlier: the system validates the **cryptographic envelope** (certificate is properly signed) but never validates the **identity claim** inside (the principal field).
 
@@ -592,6 +592,4 @@ Crypto validates "is this signed properly?" but doesn't validate "who is this cl
 4. **Group membership is a privesc path** - if you're in a group with special file access, exploit it
 5. **SSH CAs are powerful but dangerous** - without principal validation, anyone with the CA key can forge access for any user
 
-
-
-<figure><img src="../../../../.gitbook/assets/complete (38).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

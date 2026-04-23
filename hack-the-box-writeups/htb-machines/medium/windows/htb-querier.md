@@ -922,4 +922,4 @@ b19c3794...
 
 Mission complete. Root access achieved on the target box.
 
-<figure><img src="../../../../.gitbook/assets/complete (18).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

@@ -6,8 +6,6 @@ icon: road
 
 <figure><img src="../../../../.gitbook/assets/image (173).png" alt=""><figcaption></figcaption></figure>
 
-
-
 ## **Attack Flow Explanation**
 
 **Initial Access**
@@ -319,4 +317,4 @@ root@underpass:~# cat root.txt
 
 ***
 
-<figure><img src="../../../../.gitbook/assets/complete (6).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

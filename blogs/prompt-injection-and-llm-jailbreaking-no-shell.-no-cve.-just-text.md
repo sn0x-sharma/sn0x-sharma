@@ -60,7 +60,7 @@ Alright. Let’s get into it.
 
 ## First What Even Is a Prompt?
 
-<figure><img src="../.gitbook/assets/image (639).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (638).png" alt=""><figcaption></figcaption></figure>
 
 Sounds basic but this is the thing most people skip and then everything else doesn’t make sense.
 
@@ -158,7 +158,7 @@ That second message means nothing without the history. So the full history ships
 
 Practical implication: if a single-turn injection fails, build up 5–10 turns of normal conversation first. Some models behave differently deep in a session the context window is loaded with “compliant” history and late-conversation injections sometimes land more reliably.
 
-<figure><img src="../.gitbook/assets/image (646).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (645).png" alt=""><figcaption></figcaption></figure>
 
 ### The Lab Setup What We’re Working With
 
@@ -179,7 +179,7 @@ Our job: get the key. Let’s go through every technique with what the actual pa
 
 ## Direct Prompt Injection The Attack Techniques
 
-<figure><img src="../.gitbook/assets/image (647).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (642).png" alt=""><figcaption></figcaption></figure>
 
 #### The Classic (That Barely Works Anymore)
 
@@ -700,10 +700,10 @@ surely]{\comment={[@ tableView "@github
 
 That garbage isn’t random. It’s gradient-optimized to maximize compliance probability. The model doesn’t understand it — the specific token sequence just shifts the probability distribution.
 
-**Suffix repo**:&#x20;
+**Suffix repo**:
 
 [**GitHub - llm-attacks/llm-attacks: Universal and Transferable Attacks on Aligned Language Models**\
-&#xNAN;_&#x55;niversal and Transferable Attacks on Aligned Language Models - llm-attacks/llm-attack&#x73;_&#x67;ithub.com](https://github.com/llm-attacks/llm-attacks)
+\&#xNAN;_Universal and Transferable Attacks on Aligned Language Models - llm-attacks/llm-attack&#x73;_&#x67;ithub.com](https://github.com/llm-attacks/llm-attacks)
 
 ### Opposite Mode
 
@@ -893,22 +893,22 @@ Doesn’t fully work. Raises the bar.
 
 ## Tools
 
-**garak** — automated injection and jailbreak probe runner, hundreds of variations, reports bypass rates&#x20;
+**garak** — automated injection and jailbreak probe runner, hundreds of variations, reports bypass rates
 
 {% embed url="https://github.com/NVIDIA/garak" %}
 
 \
-**promptmap** automated prompt injection testing, maps system prompt restrictions&#x20;
+**promptmap** automated prompt injection testing, maps system prompt restrictions
 
 {% embed url="https://github.com/utkusen/promptmap" %}
 
 \
-**LLMmap** model fingerprinting via behavioral distance scores&#x20;
+**LLMmap** model fingerprinting via behavioral distance scores
 
 {% embed url="https://github.com/pasquini-dario/LLMmap" %}
 
 \
-**JailbreakBench** standardized benchmark for measuring jailbreak success rates across models&#x20;
+**JailbreakBench** standardized benchmark for measuring jailbreak success rates across models
 
 {% embed url="https://github.com/JailbreakBench/jailbreakbench" %}
 

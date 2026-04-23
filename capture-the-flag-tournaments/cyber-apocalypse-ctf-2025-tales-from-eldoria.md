@@ -4,7 +4,7 @@ cover: ../.gitbook/assets/Screenshot 2026-03-07 203302.png
 coverY: 40.71981115891862
 ---
 
-# CYBER APOCALYPSE CTF 2025  Tales from Eldoria
+# CYBER APOCALYPSE CTF 2025 Tales from Eldoria
 
 #### CTF Experience
 
@@ -1898,7 +1898,7 @@ StoneForges     : SMB write → nginx.conf alias / block → reload → filesyst
 
 ***
 
-## Techniques&#x20;
+## Techniques
 
 | Category      | Technique                            | Challenge                     |
 | ------------- | ------------------------------------ | ----------------------------- |
@@ -1934,4 +1934,4 @@ StoneForges     : SMB write → nginx.conf alias / block → reload → filesyst
 | Secure Coding | auto\_prepend\_file RCE              | Lyras Tavern                  |
 | Secure Coding | Nginx alias Misconfiguration         | StoneForges Domain            |
 
-<figure><img src="../.gitbook/assets/complete (37).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

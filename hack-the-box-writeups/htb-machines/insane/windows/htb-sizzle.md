@@ -109,7 +109,7 @@ Extracted domain: HTB.LOCAL
 Added HTB.LOCAL to /etc/hosts with IP 10.129.222.170
 ```
 
-During the scan, I noticed something unusual  it took longer than expected, and the target would stop responding whenever I increased the `min-rate` too much. Although anonymous FTP access was enabled, the directory contained no files and did not allow uploads.
+During the scan, I noticed something unusual it took longer than expected, and the target would stop responding whenever I increased the `min-rate` too much. Although anonymous FTP access was enabled, the directory contained no files and did not allow uploads.
 
 The more notable findings were the absence of port **88/tcp** (Kerberos) and the presence of **5986/tcp** (WinRM over HTTPS). Without Kerberos, we lose the ability to perform common attacks like **ASREProasting** and **Kerberoasting** for harvesting hashes and enumerating users. As for the web service on port **80**, it served nothing more than an image of bacon sizzling — amusing, but not particularly useful.
 
@@ -438,8 +438,6 @@ With valid credentials in hand, I quickly snagged the **user flag**.
 
 Next, I loaded up **BloodHound** and pulled fresh data from the server. The results showed that **MRLKY** possesses both the **`GetChanges`** and **`GetChangesAll`** privileges on the domain. These combined privileges grant **DCSync** capabilities, meaning we can request replication data (including password hashes) from the Domain Controller.
 
-
-
 Skipping past the routine steps, I leveraged **Impacket-SecretsDump** to extract the **Administrator** account’s credentials from the Domain Controller. With the NTLM hash in hand, I used **CrackMapExec** to confirm access and **Impacket-wmiexec** to obtain a shell:
 
 ```python
@@ -520,4 +518,4 @@ htb\administrator
 
 From there, I had **full Domain Admin** access and could freely browse the desktops of all users to retrieve both the **User** and **Root** flags.
 
-<figure><img src="../../../../.gitbook/assets/complete (27).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

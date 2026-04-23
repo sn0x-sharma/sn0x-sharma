@@ -1,6 +1,6 @@
 ---
 icon: tornado
-cover: ../../../../.gitbook/assets/Screenshot 2026-03-02 121809.png
+cover: ../../../../.gitbook/assets/image (108).png
 coverY: -12.171062373219657
 ---
 
@@ -597,4 +597,4 @@ Kernel 4.8.0-58 --> CVE-2017-1000112 (UFO memory corruption LPE)
 | Exploit fingerprinting bypass             | Changing hardcoded `lsb_release` codename in exploit source from `xenial` to `bladerunner`               |
 | `/proc/self` dumpable attribute awareness | Running kernel exploit from un-elevated shell to preserve `/proc/self/` file ownership                   |
 
-<figure><img src="../../../../.gitbook/assets/complete (37).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

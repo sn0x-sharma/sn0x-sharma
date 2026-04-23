@@ -507,4 +507,4 @@ Now let’s talk **defensive hardening** – how to prevent everything you just 
 * Isolate backend databases and internal networks.
 * Disable direct outbound internet access from internal servers unless needed.
 
-<figure><img src="../../../../.gitbook/assets/complete (11).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

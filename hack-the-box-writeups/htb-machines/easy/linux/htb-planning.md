@@ -228,8 +228,6 @@ udp        0      0 127.0.0.54:53           0.0.0.0:*                           
 udp        0      0 127.0.0.53:53           0.0.0.0:*                           -  
 ```
 
-
-
 ## Privilege Escalation <a href="#privilege-escalation" id="privilege-escalation"></a>
 
 The `/opt` directory contains a `crontabs` folder with a `crontab.db` file owned by root and recently modified. This JSON file defines two scheduled jobs - notably, the "Grafana backup" task exports the Docker image to `/var/backups` and creates a password-protected ZIP file using the password `P4ssw0rdS0pRi0T3c`.
@@ -332,4 +330,4 @@ root
 bash-5.2# cat /root/root.txt
 ```
 
-<figure><img src="../../../../.gitbook/assets/complete (35).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

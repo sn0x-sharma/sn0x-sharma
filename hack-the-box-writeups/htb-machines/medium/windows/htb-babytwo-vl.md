@@ -16,7 +16,7 @@ We begin with a comprehensive nmap scan to identify all open ports and services:
 nmap -p 1-65535 -T4 -A -v 10.129.234.72
 ```
 
-OUTPUT&#x20;
+OUTPUT
 
 ```python
  Nmap scan report for 10.129.234.72
@@ -703,4 +703,4 @@ type C:\Users\Administrator\Desktop\root.txt
 
 ***
 
-<figure><img src="../../../../.gitbook/assets/complete (35).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

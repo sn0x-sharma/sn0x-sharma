@@ -304,7 +304,7 @@ evil-winrm -i inventory.sweep.vl -u svc_inventory_lnx -p '0|5m-U6?/uAX'
 type c:\user.txt
 ```
 
-&#x20;**User flag captured!**
+**User flag captured!**
 
 ***
 
@@ -372,4 +372,4 @@ Guest → intern:intern → Lansweeper → SSH Honeypot → svc_inventory_lnx �
 
 ***
 
-<figure><img src="../../../../.gitbook/assets/complete (35).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

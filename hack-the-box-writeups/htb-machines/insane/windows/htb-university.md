@@ -284,8 +284,6 @@ def generate_signed_cert(request, user):
 
 Even as regular student I can request a signed certificate via the web UI. There I can find the command to generate a CSR and the information regarding needed parameters. The common name and email address has to match the username and the email respectively.
 
-
-
 I begin by creating a new CSR and specifying `george` as common name and `george@university.htb` as the email. Then I use the downloaded files from the root CA to generate a signed certificate.
 
 <figure><img src="../../../../.gitbook/assets/image (207).png" alt=""><figcaption></figcaption></figure>
@@ -795,4 +793,4 @@ Using it, I performed a **DCSync** attack to dump all domain password hashes, in
 
 With the Domain Admin hash obtained, I authenticated to the **Domain Controller**, accessed the Administrator profile, and grabbed the **final flag**.
 
-<figure><img src="../../../../.gitbook/assets/complete (28).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

@@ -4,11 +4,7 @@ icon: circle-nodes
 
 # HTB-MONTEVERDE
 
-
-
 <figure><img src="../../../../.gitbook/assets/image (455).png" alt=""><figcaption></figcaption></figure>
-
-
 
 ### Attack Chain Summary
 
@@ -24,7 +20,7 @@ icon: circle-nodes
 
 ### Phase 1: Initial Reconnaissance and RPC Enumeration
 
-#### Rustscan&#x20;
+#### Rustscan
 
 ```powershell
 ┌──(sn0x㉿sn0x)-[~/HTB/Monteverde]
@@ -813,4 +809,4 @@ This is particularly dangerous because:
 * The attack leaves minimal forensic evidence
 * It's a legitimate feature being abused, not an exploit
 
-<figure><img src="../../../../.gitbook/assets/complete (34).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

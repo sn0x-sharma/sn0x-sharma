@@ -946,4 +946,4 @@ RustScan → Kerbrute Username Enum → Web Scraping Users → ASREPRoasting (l.
 → Evil-WinRM as Administrator → SYSTEM via MySQL WebShell
 ```
 
-<figure><img src="../../../../.gitbook/assets/complete (37).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

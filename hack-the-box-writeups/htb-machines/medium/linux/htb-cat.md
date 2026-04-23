@@ -61,7 +61,7 @@ The page is the _ultimate platform to showcase your cat’s talent and beauty_, 
 
 During the registration and login process I notice that the application does not use the usual **POST** requests but relies on **GET** to transfer the data. This means that all the credentials might show up in a log somewhere.
 
-<figure><img src="../../../../.gitbook/assets/image (334).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (333).png" alt=""><figcaption></figcaption></figure>
 
 With the help of **ffuf** I bruteforce directories and files on the server. Besides some pretty common hits it also finds a `.git` repository exposed on the page.
 
@@ -546,4 +546,4 @@ exit;
 
 Trying the password `IKw75eR0MR7CMIxhH0` for the root account is successful and I get the final flag.
 
-<figure><img src="../../../../.gitbook/assets/complete (13).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

@@ -349,4 +349,4 @@ The attack demonstrated a classic Active Directory compromise pattern:
 
 1. **Anonymous Access** → **Low Privilege User** → **Service Account** → **Domain Administrator**
 
-<figure><img src="../../../../.gitbook/assets/complete (34).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/complete.gif" alt=""><figcaption></figcaption></figure>

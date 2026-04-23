@@ -1,6 +1,6 @@
 ---
 icon: book-skull
-cover: ../.gitbook/assets/96nhjn9s4g79-vritrasec (2).png
+cover: ../.gitbook/assets/96nhjn9s4g79-vritrasec.png
 coverY: 318.5920804525456
 ---
 
