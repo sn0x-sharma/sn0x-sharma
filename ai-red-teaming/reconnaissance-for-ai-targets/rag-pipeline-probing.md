@@ -6,6 +6,8 @@ icon: list-timeline
 
 ### RAG Pipeline Probing
 
+<figure><img src="../../.gitbook/assets/image (230).png" alt=""><figcaption></figcaption></figure>
+
 RAG = Retrieval Augmented Generation. The flow is:
 
 1. User sends query
@@ -13,6 +15,8 @@ RAG = Retrieval Augmented Generation. The flow is:
 3. Searches vector DB for similar document chunks
 4. Stuffs those chunks into the LLM's context as "grounding documents"
 5. LLM generates answer based on those documents
+
+<figure><img src="../../.gitbook/assets/image (252).png" alt=""><figcaption></figcaption></figure>
 
 **Why attack RAG?**
 
@@ -165,6 +169,8 @@ curl -s -X POST http://192.168.50.34/api/chat \
 ```
 
 **Why misspellings break RAG:** RAG uses hybrid scoring - vector similarity (semantic) + BM25 (keyword). Misspellings destroy both. The embedding of "vaycation dayz rulez" is far from the embedding of "vacation days policy." And BM25 keyword matching can't match "vaycation" to "vacation." Combined score drops below threshold, no retrieval.
+
+<figure><img src="../../.gitbook/assets/image (258).png" alt=""><figcaption></figcaption></figure>
 
 **Alternative RAG probing methods:**
 
