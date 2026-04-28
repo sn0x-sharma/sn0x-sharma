@@ -287,7 +287,7 @@
 
 ## Web Application Pentest
 
-* [coming Soon !](web-application-pentest/coming-soon.md)
+* [WEB 101 JJK STYLE](web-application-pentest/coming-soon.md)
 
 ## Cheatsheets
 
